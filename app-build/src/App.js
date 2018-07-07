@@ -4,6 +4,8 @@ import './App.css';
 import Wrapper from './components/Wrapper'
 import Nav from './components/Nav'
 import Card from "./components/Card";
+import Carousel from "./components/Carousel";
+import Comments from "./components/Comments";
 
 class App extends Component {
   render() {
