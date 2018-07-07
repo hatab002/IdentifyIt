@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Wrapper from './components/Wrapper'
+import Nav from './components/Nav'
+import Card from "./components/Card";
 
 class App extends Component {
   render() {
