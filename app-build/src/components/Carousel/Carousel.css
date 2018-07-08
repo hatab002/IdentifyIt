@@ -1,0 +1,26 @@
+.image-responsive {
+    width: 300px;
+    height: 200px;
+}
+
+#imageCarousel {   
+    margin-top: 2%; 
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: lightyellow;
+    
+}
+
+.carousel-control-prev-icon {
+    margin-right: 90%;
+    height: 50px;
+}
+
+.carousel-control-next-icon {
+    margin-left: 90%;
+    height: 50px;
+}
+
+#carouselExampleControls {
+    align-items: center;
+}

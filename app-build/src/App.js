@@ -18,9 +18,14 @@ class App extends Component {
             <Header/>
           </header>
 
-          <main className="App-main">
-            <Carousel />
-          </main>
+
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <Carousel />
+            </div>
+          </div>
+        </div>
     
           <footer className= "App-footer">
             <Footer />
@@ -33,3 +38,4 @@ class App extends Component {
 }
 
 export default App;
+
