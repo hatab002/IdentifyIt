@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 const Header = props => (
-    <div>
+    <div className="header-container">
         <div className="title">
             <h1>W.I.T.T</h1>
         </div>

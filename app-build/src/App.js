@@ -26,6 +26,13 @@ class App extends Component {
             </div>
           </div>
         </div>
+
+        <div className="col-md-12">
+          <div className="card-container">
+          
+          <Card />
+          </div>
+        </div>
     
           <footer className= "App-footer">
             <Footer />
