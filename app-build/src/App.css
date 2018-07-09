@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -20,6 +15,13 @@
 
 .App-intro {
   font-size: large;
+}
+
+.card-container {
+  height: 80%;
+  margin: 2%;
+  border-top-style: solid;
+  border-top-color: black;
 }
 
 @keyframes App-logo-spin {
