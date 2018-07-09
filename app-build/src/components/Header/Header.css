@@ -1,11 +1,33 @@
+h1 {
+    font-weight: bold;
+    font-size: 72px;
+    color: white;
+    text-shadow:
+    -1.5px -1.5px 0 black,
+    1.5px -1.5px 0 black,
+    -1.5px 1.5px 0 black,
+    1.5px 1.5px 0 black;
+}
+
+h2 {
+    color: white;
+    font-size: 34px;
+    text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
 .title {
     padding: 10px;
 }
 
 .directions {
-    padding: 7px;
+    padding: 5px;
 }
 
 .header-container {
-    background-color: darkorchid;
+    background-image: url("https://i.ytimg.com/vi/zQFwPAqmYMs/maxresdefault.jpg");
+    background-size: cover;
 }
