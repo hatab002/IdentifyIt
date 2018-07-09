@@ -1,3 +1,25 @@
-footer {
-    background-color: darkorchid;
+.footer {
+    background-color: #81ea8b;
+    height: 90px;
+    position: relative;
+    color: white;
+    overflow: auto;
+    display: block;
+    top: 70px;
 }
+
+.bottom {
+    font-size: 20px;
+    background-color: #FFFD57;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    text-align: left;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
+  }

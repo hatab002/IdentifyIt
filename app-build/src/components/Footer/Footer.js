@@ -3,14 +3,19 @@ import "./Footer.css";
 
 const Footer = props => (
     <div>
-        <footer>
-            <div className="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href="https://github.com/hatab002/Project3"> Dream Team</a>
+        <footer className="footer">
+            <div className="bottom">
+                W.I.T.T
             </div>
         </footer>
-    
-   </div>
-);  
+    </div>
+);
 
 export default Footer;
 
+<footer className="footer">
+    <div className="bottom">
+        Clicky Game
+ {/* <img src="./images/react.png" alt="react"/> */}
+    </div>
+</footer>

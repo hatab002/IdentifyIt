@@ -4,7 +4,7 @@ import "./Carousel.css";
 
 const Carousel = () => (
 
-    <div id="imageCarousel" className="carousel slide multi-item-carousel" data-interval="3000" 
+    <div id="imageCarousel" className="carousel slide multi-item-carousel" data-interval="2000" 
          data-ride="carousel" data-pause="hover">
 
         <div className="carousel-inner">

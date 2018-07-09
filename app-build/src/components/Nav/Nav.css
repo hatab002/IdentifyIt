@@ -1,0 +1,27 @@
+.navbar-brand {
+    font-size: 26px;
+}
+
+.navbar-light {
+    background-color: #FFFD57!important;
+}
+
+#submit-picture {
+    margin-left: 5%;
+    color: #81ea8b;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
+}
+
+#login {
+    margin-left: 350%;
+    color: #81ea8b;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
+}
