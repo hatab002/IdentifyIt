@@ -3,7 +3,7 @@ import "./Comments.css";
 
 const Comments = props => (
     
-    <div className="comments-container">
+    <div className="col-md-7" id="comments-container">
         Comments
         <br />
         bllha  lknclsdaks klasdhasudls a;lskchsdcmsa;/
