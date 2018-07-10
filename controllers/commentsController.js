@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
     findAll: (req, res) => {
-        db.Comments
+        db.Comment
             .find(req.query)
             .sort({ date: -1 })
             .then(dBModel => res.json(dBModel))
@@ -10,7 +10,7 @@ module.exports = {
     },
 
     findById: (req, res) => {
-        db.Comments
+        db.Comment
         .findById(req.params.id)
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
@@ -18,21 +18,21 @@ module.exports = {
     },
 
     create: (req, res) => {
-        db.Comments
+        db.Comment
         .create(req.body)
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
 
     update: (req, res) => {
-        db.Comments
+        db.Comment
         .findOneAndUpdate({_id: req.params.id}, req.body)
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
 
     remove: (req, res) => {
-        db.Comments
+        db.Comment
         .findById({_id: req.params.id})
         .then(dBModel => dBModel.remove())
         .then(dBModel => res.json(dBModel))
