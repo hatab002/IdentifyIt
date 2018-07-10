@@ -1,5 +1,4 @@
 .footer {
-    background-color: #81ea8b;
     height: 90px;
     position: relative;
     color: white;
@@ -9,8 +8,8 @@
 }
 
 .bottom {
+    background-image: url("https://i.ytimg.com/vi/zQFwPAqmYMs/maxresdefault.jpg");
     font-size: 20px;
-    background-color: #FFFD57;
     position: absolute;
     bottom: 0;
     left: 0;
