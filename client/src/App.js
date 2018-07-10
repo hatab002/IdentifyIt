@@ -12,11 +12,8 @@ class App extends Component {
       <div className="App">
           <header>
             <Nav />
-
             <Header/>
           </header>
-
-
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -24,19 +21,18 @@ class App extends Component {
             </div>
           </div>
         </div>
-
-        <div className="col-md-12">
-          <div className="card-container">
-          
-          <Card />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="card-container">
+                <Card />
+              </div>
+            </div>
           </div>
         </div>
-    
-          <footer className= "App-footer">
-            <Footer />
-          </footer>
-       
-
+        <footer className= "App-footer">
+          <Footer />
+        </footer>
       </div>
     );
   }

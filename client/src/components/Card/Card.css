@@ -3,13 +3,9 @@
     border-style: solid;
     border-color: black;
     margin-top: 5%;
-    margin-left: 9%;
 }
 
 #selected-image{
     width: 250px;
     height: 200px;
-    position: relative;
-    top: 20px;
-    right: 350px;
 }
