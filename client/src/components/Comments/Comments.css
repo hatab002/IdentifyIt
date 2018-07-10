@@ -1,0 +1,8 @@
+.comments-container {
+    position: relative;
+    bottom: 175px;
+    left: 500px;
+    border-style: solid;
+    width: 500px;
+    height: 150px;
+}
