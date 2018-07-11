@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  font-family: 'Gaegu', cursive;
+}
+
+.card-container {
+  height: 80%;
+  margin: 2%;
+  border-top-style: solid;
+  border-top-color: black;
+}
