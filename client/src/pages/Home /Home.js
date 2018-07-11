@@ -7,8 +7,8 @@ import Carousel from '../../components/Carousel';
 import Footer from '../../components/Footer';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       thing: []
       
@@ -37,7 +37,7 @@ class Home extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <Carousel />
+              <Carousel things={this.state.thing}/>
             </div>
           </div>
         </div>
