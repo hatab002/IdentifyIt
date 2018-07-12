@@ -3,14 +3,16 @@ const Schema = mongoose.Schema;
 
 const pictureSchema = new Schema({
     image: {
-        data: Buffer,
+        type: Buffer,
         contentType: String,
+        required: [true, "Image is required"],
     },
     solvedDate: Date,
     isSolved: {
         type: Boolean,
         default: false,
     },
+    user: {type: Schema.Types.ObjectId, ref: 'User' },
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 },
     { timestamps: true });
