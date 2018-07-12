@@ -16,6 +16,5 @@ export default Footer;
 <footer className="footer">
     <div className="bottom">
         Clicky Game
- {/* <img src="./images/react.png" alt="react"/> */}
     </div>
 </footer>
