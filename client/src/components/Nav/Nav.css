@@ -7,6 +7,7 @@
 }
 
 #submit-picture {
+    cursor: pointer;
     margin-left: 5%;
     color: #81ea8b;
     text-shadow:
@@ -16,7 +17,8 @@
     .5px .5px 0 black;
 }
 
-#login {
+#login, #sign-out {
+    cursor: pointer;
     margin-left: 350%;
     color: #81ea8b;
     text-shadow:
@@ -24,4 +26,8 @@
     .5px -.5px 0 black,
     -.5px .5px 0 black,
     .5px .5px 0 black;
+}
+
+#sign-out {
+    margin-left: 850%;
 }
