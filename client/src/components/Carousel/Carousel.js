@@ -12,7 +12,7 @@ const Carousel = (props) => (
             <div className="carousel-item">
                 <div className="row">
                     {props.witts.map((witt, index) => (
-                        <div className="col-md-4">
+                        <div className="col-md-2">
                         <img src={witt.image} 
                             alt="First slide" className="image-responsive" onClick={()=>props.updateCard(index)}></img>
                     </div>
