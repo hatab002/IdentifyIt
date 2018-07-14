@@ -20,22 +20,35 @@ module.exports = {
     create: (req, res) => {
         db.Comment
         .create(req.body)
-        .then(dBModel => res.json(dBModel))
+        .then(dBModel => db.Picture.findByIdAndUpdate( // add to picture's list of comments
+            dBModel.picture,
+            { $push: { comments: dBModel._id } },
+            { new: true }
+        ).then(updatedPicture => db.User.findByIdAndUpdate( // add to user's list of comments
+           dBModel.user,
+           { $push: { comments: dBModel._id } },
+           { new: true } 
+        ).then(updatedUser => res.json(dBModel))))
         .catch(err => res.status(422).json(err));
     },
 
     update: (req, res) => {
         db.Comment
-        .findOneAndUpdate({_id: req.params.id}, req.body)
+        .findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
 
     remove: (req, res) => {
         db.Comment
-        .findById({_id: req.params.id})
-        .then(dBModel => dBModel.remove())
-        .then(dBModel => res.json(dBModel))
+        .findByIdAndRemove(req.params.id)
+        .then(dBModel => db.Picture.findByIdAndUpdate( // remove from picture's list of comments
+            dBModel.picture,
+            { $pull: { comments: dBModel._id } }
+        ).then(updatedPicture => db.User.findByIdAndUpdate( // remove from user's list of comments
+            dBModel.user,
+            { $pull: { comments: dBModel._id } }
+        ).then(updatedUser => res.json(dBModel))))
         .catch(err => res.status(422).json(err));
     }
 };
