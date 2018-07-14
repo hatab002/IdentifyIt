@@ -9,8 +9,14 @@ import witts from "./witts.json";
 
 class App extends Component {
   state = {
-    witts
+    witts,
+    card: witts[0]
   };
+
+  updateCard = (i) =>{
+    console.log("click")
+    this.setState({card: witts[i]})
+  }
   render() {
     return (
       <div className="App">
@@ -21,7 +27,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <Carousel />
+              <Carousel witts={this.state.witts} updateCard={this.updateCard}/>
             </div>
           </div>
         </div>
@@ -29,14 +35,13 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="card-container">
-              {this.state.witts.map(witt => (
+      
                 <Card        
-                  id={witt.id}
-                  key={witt.id}
-                  image={witt.image}
-                  comments= {witt.comments}
+                  id={this.state.card.id}
+                  image={this.state.card.image}
+                  comments= {this.state.card.comments}
                    />
-                  ))}
+                  
               </div>
             </div>
           </div>
