@@ -12,6 +12,7 @@ module.exports = {
     findById: (req, res) => {
         db.Picture
         .findById(req.params.id)
+        .populate("comments")
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
@@ -29,7 +30,7 @@ module.exports = {
 
     update: (req, res) => {
         db.Picture
-        .findOneAndUpdate({_id: req.params.id}, req.body)
+        .findOneAndUpdate({_id: req.params.id}, req.body, {new: true})
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
