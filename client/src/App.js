@@ -34,9 +34,9 @@ class App extends Component {
                   id={witt.id}
                   key={witt.id}
                   image={witt.image}
+                  comments= {witt.comments}
                    />
                   ))}
-                />
               </div>
             </div>
           </div>
