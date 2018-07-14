@@ -14,14 +14,18 @@ const Login = (props) => (
         </div>
         <div class="modal-body">
         <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+              <input type="text" class="form-control" id="create-username" aria-describedby="" placeholder="Create Username"></input>
+          </div>
           <div class="form-group">
             <label for="create-account-email">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+              <input type="email" class="form-control" id="create-account-email" aria-describedby="emailHelp" placeholder="Enter email"></input>
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="create-account-password">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+              <input type="password" class="form-control" id="choose-password" placeholder="Choose Password"></input>
           </div>
           <button type="submit" class="btn btn-primary">Create Account</button>
         </form>
@@ -46,11 +50,7 @@ const Login = (props) => (
         <form>
         <div class="form-group">
             <label for="username">Username</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-          </div>
-          <div class="form-group">
-            <label for="login-email">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+              <input type="text" class="form-control" id="username" aria-describedby="" placeholder="Username"></input>
           </div>
           <div class="form-group">
             <label for="login-password">Password</label>
