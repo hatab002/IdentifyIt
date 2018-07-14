@@ -2,45 +2,49 @@ import React from "react";
 import "./Carousel.css";
 
 
-const Carousel = () => (
+const Carousel = (props) => (
 
+  
     <div id="imageCarousel" className="carousel slide multi-item-carousel" data-interval="2000" 
          data-ride="carousel" data-pause="hover">
-
+ 
         <div className="carousel-inner">
-            <div className="carousel-item active">
+            <div className="carousel-item">
                 <div className="row">
-                    <div className="col-md-4">
-                        <img src="https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg" 
-                             alt="First slide" className="image-responsive"></img>
+                    {props.witts.map((witt, index) => (
+                        <div className="col-md-4">
+                        <img src={witt.image} 
+                            alt="First slide" className="image-responsive" onClick={()=>props.updateCard(index)}></img>
                     </div>
-                    <div className="col-md-4">
+                    ))}
+       
+                    {/* <div className="col-md-4">
                         <img src="https://s-i.huffpost.com/gen/1308835/images/o-FOX-facebook.jpg" 
-                             alt="Second slide" className="image-responsive"></img>
+                             alt="Second slide" className="image-responsive" onClick={props.updateCard}></img>
                     </div>
                     <div className="col-md-4">
                         <img src="http://cdn3-www.mandatory.com/assets/mandatory/legacy/2016/02/man_file_1064762_1banana.jpg" 
-                             alt="Third slide" className="image-responsive"></img>
-                    </div>
+                             alt="Third slide" className="image-responsive" onClick={props.updateCard}></img>
+                    </div> */}
                 </div>
             </div>
-            <div className="carousel-item">
+            {/* <div className="carousel-item">
                 <div className="row">
                 <div className="col-md-4">
                         <img src="https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg" 
-                             alt="First slide" className="image-responsive"></img>
+                             alt="First slide" className="image-responsive" onClick={props.updateCard}></img>
                     </div>
                     <div className="col-md-4">
                         <img src="https://s-i.huffpost.com/gen/1308835/images/o-FOX-facebook.jpg" 
-                             alt="Second slide" className="image-responsive"></img>
+                             alt="Second slide" className="image-responsive" onClick={props.updateCard}></img>
                     </div>
                     <div className="col-md-4">
                         <img src="http://cdn3-www.mandatory.com/assets/mandatory/legacy/2016/02/man_file_1064762_1banana.jpg" 
-                             alt="Third slide" className="image-responsive"></img>
+                             alt="Third slide" className="image-responsive" onClick={props.updateCard}></img>
                     </div>
                 </div>
-            </div>
-            <div className="carousel-item">
+            </div> */}
+            {/* <div className="carousel-item">
             <div className="row">
             <div className="col-md-4">
                         <img src="https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg" 
@@ -55,7 +59,7 @@ const Carousel = () => (
                              alt="Third slide" className="image-responsive"></img>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
 
         <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
