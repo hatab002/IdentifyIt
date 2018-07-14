@@ -4,9 +4,11 @@ import "./Comments.css";
 const Comments = props => (
     
     <div className="col-md-7" id="comments-container">
-        Comments
-        <br />
-        bllha  lknclsdaks klasdhasudls a;lskchsdcmsa;/
+
+       <ul>
+       <strong>comments:</strong> {props.comments}
+       </ul>
+       
     </div>
 )
 

@@ -5,8 +5,12 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
+import witts from "./witts.json";
 
 class App extends Component {
+  state = {
+    witts
+  };
   render() {
     return (
       <div className="App">
@@ -25,7 +29,14 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12">
               <div className="card-container">
-                <Card />
+              {this.state.witts.map(witt => (
+                <Card        
+                  id={witt.id}
+                  key={witt.id}
+                  image={witt.image}
+                   />
+                  ))}
+                />
               </div>
             </div>
           </div>
