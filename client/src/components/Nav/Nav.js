@@ -25,7 +25,10 @@ const Nav = (props) => {
       <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
       <Submit />
       <div>
-        <p id="login" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Log In/Create User</p>
+        <p id="login" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Log In</p>
+      </div>
+      <div>
+        <p id="create-account" className="navbar-brand" data-toggle="modal" data-target="#createUser">Create Account</p>
       </div>
     </nav>
     <Login />
