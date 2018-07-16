@@ -2,9 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const pictureSchema = new Schema({
-    image: {
-        type: Buffer,
-        contentType: String,
+    filename: {
+        type: String,
         required: [true, "Image is required"],
     },
     solvedDate: Date,

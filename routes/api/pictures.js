@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const picturesController = require("../../controllers/picturesController");
+const multer  = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 
 router.route("/")
     .get(picturesController.findAll)
-    .post(picturesController.create);
+    .post(upload.single("picture"), picturesController.create);
 
 router
     .route("/:id")
