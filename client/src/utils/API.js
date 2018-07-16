@@ -20,5 +20,8 @@ export default {
     saveComment: (commentData) => axios.post("/api/comments", commentData),
     getComment: (commentId) => axios.get(`/api/comments/${commentId}`),
     updateComment: (commentId, commentData) => axios.put(`/api/comments/${commentId}`, commentData),
-    deleteComment: (commentId) => axios.delete(`/api/comments/${commentId}`)
+    deleteComment: (commentId) => axios.delete(`/api/comments/${commentId}`),
+
+    // Uploads API
+    getUpload: (uploadId) => axios.get(`/api/uploads/${uploadId}`)
 };

@@ -1,4 +1,6 @@
 const db = require("../models");
+const path = require("path");
+const fs = require("fs");
 
 module.exports = {
     findAll: (req, res) => {
@@ -19,11 +21,13 @@ module.exports = {
 
     create: (req, res) => {
         db.Picture
-        .create(req.body)
-        .then(dBModel => db.User.findByIdAndUpdate( // add to user's list of pictures
+        .create({
+            filename: req.file.filename,
+            user: req.body.user
+        }).then(dBModel => db.User.findByIdAndUpdate(
             dBModel.user,
             { $push: { pictures: dBModel._id } },
-            { new: true },
+            { new: true}
         ).then(updatedUser => res.json(dBModel)))
         .catch(err => res.status(422).json(err));
     },
@@ -38,10 +42,15 @@ module.exports = {
     remove: (req, res) => {
         db.Picture
         .findByIdAndRemove(req.params.id)
-        .then(dbModel => db.User.findByIdAndUpdate( // remove from user's list of pictures
-            dbModel.user,
-            { $pull: { pictures: dbModel._id } }
-        ).then(updatedUser => res.json(dbModel)))
-        .catch(err => res.status(422).json(err));
+        .then(dBModel => {
+            fs.unlink(path.join("./uploads", dBModel.filename), (err) => {
+                if (err) throw err;
+            });
+            db.User.findByIdAndUpdate( // remove from user's list of pictures
+                dBModel.user,
+                { $pull: { pictures: dBModel._id } }
+            ).then(updatedUser => res.json(dBModel))
+            .catch(err => res.status(422).json(err));
+        });
     }
 };
