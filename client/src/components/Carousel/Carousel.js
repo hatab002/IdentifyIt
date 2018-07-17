@@ -5,7 +5,7 @@ class Carousel extends React.Component {
     componentDidMount() {
         this.interval = setInterval(() => {
             this.setState({start: this.state.start + 1})
-        }, 70000)
+        }, 3000)
     }
     state = {
         start: 0
@@ -22,11 +22,12 @@ class Carousel extends React.Component {
         <div className="carousel-inner">
             <div className="carousel-item active">
                 <div className="row">
-                    {this.shutter(props.pictures, this.state.start).map(pictures, index) => (
-                        <div className="col-md-4">
-                            <img src={`/api/uploads/${witt.filename}`}
-                                alt="First slide" className="image-responsive" onClick={() => props.updateCard(pictures.id -1)}></img>
-                        </div>
+                    {this.shutter(props.pictures, this.state.start).map((pictures, index) => (
+                        <div 
+                        className="col-md-4">
+                        <img src={`/api/uploads/${pictures.filename}`} 
+                            alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(pictures.id -1); props.toggleCard()}}></img>
+                    </div>
                     ))}
                 </div>
             </div>

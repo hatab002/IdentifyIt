@@ -1,14 +1,15 @@
 .footer {
-    height: 90px;
+    height: 70px;
     position: relative;
     color: white;
+    background-color: skyblue;
     overflow: auto;
     display: block;
-    top: 70px;
+    top:60px;
 }
 
 .bottom {
-    background-image: url("https://i.ytimg.com/vi/zQFwPAqmYMs/maxresdefault.jpg");
+    background-color: #FFFD57;
     font-size: 20px;
     position: absolute;
     bottom: 0;
