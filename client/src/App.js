@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
+import API from './utils/API';
 import witts from "./witts.json";
 
 class App extends Component {
@@ -20,8 +21,14 @@ class App extends Component {
     })
     console.log("hello")
   }
+  
+  componentDidMount() {
+    API.getPictures()
+      .then(res => this.setState( {pictures: res.data} ))
+      .catch(err => console.log(err));
+  }
 
-  updateCard = (i) => {
+  updateCard = (i) =>{
     console.log("click")
     this.setState({card: witts[i]})
   }
@@ -36,7 +43,9 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
+
               <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
+      
             </div>
           </div>
         </div>
