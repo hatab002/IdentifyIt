@@ -10,13 +10,22 @@ import witts from "./witts.json";
 class App extends Component {
   state = {
     witts,
-    card: witts[0]
+    card: witts[0],
+    isHidden: true
   };
+  
+  toggleCard = () => {
+    this.setState ({
+      isHidden: !this.state.isHidden
+    })
+    console.log("hello")
+  }
 
-  updateCard = (i) =>{
+  updateCard = (i) => {
     console.log("click")
     this.setState({card: witts[i]})
   }
+
   render() {
     return (
       <div className="App">
@@ -27,7 +36,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <Carousel witts={this.state.witts} updateCard={this.updateCard}/>
+              <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
             </div>
           </div>
         </div>
@@ -36,11 +45,11 @@ class App extends Component {
             <div className="col-md-12">
               <div className="card-container">
       
-                <Card        
+                {!this.state.isHidden && <Card        
                   id={this.state.card.id}
                   image={this.state.card.image}
                   comments= {this.state.card.comments}
-                   />
+                   />}
                   
               </div>
             </div>

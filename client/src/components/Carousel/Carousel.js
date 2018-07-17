@@ -6,7 +6,7 @@ class Carousel extends React.Component {
     componentDidMount() {
         this.interval = setInterval(() => {
             this.setState({start: this.state.start + 1})
-        }, 70000)
+        }, 3000)
     }
     state = {
         start: 0
@@ -27,7 +27,7 @@ class Carousel extends React.Component {
                         <div 
                         className="col-md-4">
                         <img src={witt.image} 
-                            alt="First slide" className="image-responsive" onClick={()=>props.updateCard(witt.id -1)}></img>
+                            alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(witt.id -1); props.toggleCard()}}></img>
                     </div>
                     ))}
                 </div>
