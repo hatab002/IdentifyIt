@@ -4,20 +4,20 @@ import "./Carousel.css";
 
 const Carousel = (props) => (
 
-  
-    <div id="imageCarousel" className="carousel slide multi-item-carousel" data-interval="2000" 
-         data-ride="carousel" data-pause="hover">
- 
+
+    <div id="imageCarousel" className="carousel slide multi-item-carousel" data-interval="2000"
+        data-ride="carousel" data-pause="hover">
+
         <div className="carousel-inner">
             <div className="carousel-item">
                 <div className="row">
-                    {props.witts.map((witt, index) => (
-                        <div className="col-md-2">
-                        <img src={witt.image} 
-                            alt="First slide" className="image-responsive" onClick={()=>props.updateCard(index)}></img>
-                    </div>
+                    {props.pictures.map((witt, index) => (
+                        <div className="col-md-4">
+                            <img src={`/api/uploads/${witt.filename}`}
+                                alt="First slide" className="image-responsive" onClick={() => props.updateCard(index)}></img>
+                        </div>
                     ))}
-       
+
                     {/* <div className="col-md-4">
                         <img src="https://s-i.huffpost.com/gen/1308835/images/o-FOX-facebook.jpg" 
                              alt="Second slide" className="image-responsive" onClick={props.updateCard}></img>
