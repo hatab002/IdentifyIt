@@ -8,7 +8,31 @@ const Comments = props => (
        <ul>
        <strong>comments:</strong> {props.comments}
        </ul>
-       
+
+       {/* function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
+}
+
+const formInstance = (
+  <form>
+    <FieldGroup
+      id="formControlsText"
+      type="text"
+      label="Your Guess"
+      placeholder="Enter text"
+    />
+    <Button type="submit">Submit</Button>
+  </form>
+);
+
+render(formInstance);
+        */}
     </div>
 )
 
