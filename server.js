@@ -14,11 +14,12 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use(routes);
 
-mongoose.Promise = global.Promise
-let MONGO_URL
-	mongoose.connect("mongodb://heroku_362284tg:vtakfrfl8o5qng8j4js1pgbu7e@ds141661.mlab.com:41661/heroku_362284tg"); // local mongo url
-	var dbConnection = mongoose.connection
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/witt");
+// mongoose.Promise = global.Promise
+// let MONGO_URL
+// 	mongoose.connect("mongodb://heroku_362284tg:vtakfrfl8o5qng8j4js1pgbu7e@ds141661.mlab.com:41661/heroku_362284tg"); // local mongo url
+// 	var dbConnection = mongoose.connection
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/witt");
 
 app.listen(PORT, function() {
   console.log(`API server listening on PORT ${PORT}!`);
