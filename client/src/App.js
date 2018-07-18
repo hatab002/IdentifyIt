@@ -5,13 +5,13 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
+// import witts from "./witts.json";
 import API from './utils/API';
-import witts from "./witts.json";
 
 class App extends Component {
   state = {
-    witts,
-    card: witts[0],
+    pictures: null,
+    card: null,
     isHidden: true
   };
   
@@ -30,7 +30,7 @@ class App extends Component {
 
   updateCard = (i) =>{
     console.log("click")
-    this.setState({card: witts[i]})
+    this.setState({card: this.state.pictures[i]})
   }
 
   render() {
@@ -43,9 +43,8 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
+              {/* <Carousel toggleCard={this.toggleCard} pictures={this.state.pictures} updateCard={this.updateCard}/> */}
 
-              <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
-      
             </div>
           </div>
         </div>
