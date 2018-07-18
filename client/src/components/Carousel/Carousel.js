@@ -1,12 +1,11 @@
 import React from "react";
 import "./Carousel.css";
 
-
 class Carousel extends React.Component {
     componentDidMount() {
         this.interval = setInterval(() => {
             this.setState({start: this.state.start + 1})
-        }, 70000)
+        }, 3000)
     }
     state = {
         start: 0
@@ -19,15 +18,15 @@ class Carousel extends React.Component {
       const props = this.props
       return <div id="imageCarousel" className="carousel slide multi-item-carousel" 
          data-ride="carousel" data-pause="hover">
- 
+
         <div className="carousel-inner">
             <div className="carousel-item active">
                 <div className="row">
-                    {this.shutter(props.witts, this.state.start).map((witt, index) => (
+                    {this.shutter(props.pictures, this.state.start).map((pictures, index) => (
                         <div 
                         className="col-md-4">
-                        <img src={witt.image} 
-                            alt="First slide" className="image-responsive" onClick={()=>props.updateCard(witt.id -1)}></img>
+                        <img src={`/api/uploads/${pictures.filename}`} 
+                            alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(pictures.id -1); props.toggleCard()}}></img>
                     </div>
                     ))}
                 </div>

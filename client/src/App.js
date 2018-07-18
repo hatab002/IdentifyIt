@@ -6,9 +6,7 @@ import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
 // import witts from "./witts.json";
-
 import API from './utils/API';
-// import pictures from "./witts.json";
 
 class App extends Component {
   state = {
@@ -28,14 +26,13 @@ class App extends Component {
     API.getPictures()
       .then(res => this.setState( {pictures: res.data} ))
       .catch(err => console.log(err));
-      console.log(this.state.pictures);
-      
   }
 
   updateCard = (i) =>{
     console.log("click")
     this.setState({card: this.state.pictures[i]})
   }
+
   render() {
     return (
       <div className="App">
@@ -47,6 +44,7 @@ class App extends Component {
           <div className="row">
             <div className="col-md-12">
               {/* <Carousel toggleCard={this.toggleCard} pictures={this.state.pictures} updateCard={this.updateCard}/> */}
+
             </div>
           </div>
         </div>
@@ -55,11 +53,11 @@ class App extends Component {
             <div className="col-md-12">
               <div className="card-container">
       
-                <Card        
+                {!this.state.isHidden && <Card        
                   id={this.state.card.id}
                   image={this.state.card.image}
                   comments= {this.state.card.comments}
-                   />
+                   />}
                   
               </div>
             </div>

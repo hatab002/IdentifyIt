@@ -3,16 +3,16 @@ import "./Card.css";
 import Comments from '../Comments';
 
 const Card = props => (
+
     <div className="container">
         <div className="row">
             <div className="col-md-12" id="card">
                 <div className="row">
                     <div className="col-md-5">
-                        <img id="selected-image" src={props.image} />
+                        <img id="selected-image" src={props.image} alt="image-holder"/>
                     </div>
-                    <Comments
-                    comments={props.comments}
-                    />
+                    <Comments 
+                    comments={props.comments}/>
                 </div>
             </div>
         </div>
