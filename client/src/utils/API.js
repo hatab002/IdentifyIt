@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     // Users API
-    getUsers: () => axios.get("/api/users/"),
+    getUsers: () => axios.get("/api/users"),
     saveUser: (userData) => axios.post("/api/users", userData),
     getUser: (userId) => axios.get(`/api/users/${userId}`),
     updateUser: (userId, userData) => axios.put(`/api/users/${userId}`, userData),

@@ -39,6 +39,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// mongoose.Promise = global.Promise
+// let MONGO_URL
+// 	mongoose.connect("mongodb://heroku_362284tg:vtakfrfl8o5qng8j4js1pgbu7e@ds141661.mlab.com:41661/heroku_362284tg"); // local mongo url
+// 	var dbConnection = mongoose.connection
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/witt");
 
 app.listen(PORT, function() {

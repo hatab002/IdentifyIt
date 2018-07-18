@@ -12,13 +12,28 @@ import config from './config.json';
 
 
 
+import API from './utils/API';
 
 class App extends Component {
   state = {
     witts,
     card: witts[0],
-    isAuthenticated: false
+    isAuthenticated: false,
+    isHidden: true
   };
+  
+  toggleCard = () => {
+    this.setState ({
+      isHidden: !this.state.isHidden
+    })
+    console.log("hello")
+  }
+  
+  componentDidMount() {
+    API.getPictures()
+      .then(res => this.setState( {pictures: res.data} ))
+      .catch(err => console.log(err));
+  }
 
   updateCard = (i) =>{
     console.log("click")
@@ -60,7 +75,8 @@ googleResponse = (response) => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <Carousel witts={this.state.witts} updateCard={this.updateCard}/>
+              <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
+
             </div>
           </div>
         </div>
@@ -69,11 +85,11 @@ googleResponse = (response) => {
             <div className="col-md-12">
               <div className="card-container">
       
-                <Card        
+                {!this.state.isHidden && <Card        
                   id={this.state.card.id}
                   image={this.state.card.image}
                   comments= {this.state.card.comments}
-                   />
+                   />}
                   
               </div>
             </div>
