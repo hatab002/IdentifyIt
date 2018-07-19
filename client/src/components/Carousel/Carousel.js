@@ -25,7 +25,7 @@ class Carousel extends React.Component {
                     {this.shutter(props.witts, this.state.start).map((witt, index) => (
                         <div 
                         className="col-md-4">
-                        <img src={`/api/uploads/${witt.filename}`} 
+                        <img src={`${witt.filename}`} 
                             alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(witt.id -1); props.toggleCard()}}></img>
                     </div>
                     ))}
