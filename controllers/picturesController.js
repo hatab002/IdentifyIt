@@ -5,10 +5,10 @@ const fs = require("fs");
 module.exports = {
     findAll: (req, res) => {
         db.Picture
-        .find(req.query)
+        .find({})
         .populate("comments")
         .sort({ date: -1 })
-        .then(dBModel => res.json(dBModel))
+        .then(dBModel => {console.log(dBModel);res.json(dBModel)})
         .catch(err => res.status(422).json(err));
     },
 

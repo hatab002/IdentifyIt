@@ -5,19 +5,23 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
-import witts from "./witts.json";
+
 //passport
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json';
 
-
-
 import API from './utils/API';
 
+let witts = [{
+  "id": 1,
+  "image": "https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg",
+  "comments": "The coffe that stoped WWIII"
+}]
 class App extends Component {
   state = {
     witts,
     card: witts[0],
+
     isAuthenticated: false,
     isHidden: true
   };
@@ -31,13 +35,16 @@ class App extends Component {
   
   componentDidMount() {
     API.getPictures()
-      .then(res => this.setState( {pictures: res.data} ))
+      .then(res => {
+        console.log(res.data);
+        this.setState( {witts: res.data, card: res.data[0] ? res.data[0] : this.state.card})
+      })
       .catch(err => console.log(err));
   }
 
   updateCard = (i) =>{
     console.log("click")
-    this.setState({card: witts[i]})
+    this.setState({card: this.state.witts[i] ? this.state.witts[i]: this.state.card})
   }
 
 googleResponse = (response) => {

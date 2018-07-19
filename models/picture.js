@@ -10,12 +10,12 @@ const pictureSchema = new Schema({
     isSolved: {
         type: Boolean,
         default: false,
-    },
-    user: {type: Schema.Types.ObjectId, ref: "User" },
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    }
+    // user: {type: Schema.Types.ObjectId, ref: "User" },
+    // comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
 },
     { timestamps: true });
 
-const Picture = mongoose.model("Picture", pictureSchema);
+const Picture = mongoose.model("Picture", pictureSchema, "Pictures");
 
 module.exports = Picture;
