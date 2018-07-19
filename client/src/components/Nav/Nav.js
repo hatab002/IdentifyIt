@@ -5,8 +5,8 @@ import "./Nav.css";
 
 
 
-// const Nav = (props) => {
-  function Nav(props) {
+const Nav = (props) => {
+  // function Nav(props) {
 
   const isLoggedIn = props.isLoggedIn;
   console.log('logged in is', isLoggedIn)
