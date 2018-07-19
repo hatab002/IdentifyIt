@@ -101,8 +101,8 @@ googleResponse = (response) => {
       
                 {!this.state.isHidden && <Card        
                   id={this.state.card.id}
-                  image={this.state.card.image}
-                  comments= {this.state.card.comments}
+                  image={this.state.card.filename}
+                  comments= {this.state.card.text}
                    />}
                   
               </div>
