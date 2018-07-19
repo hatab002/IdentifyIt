@@ -1,39 +1,22 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./Comments.css";
 
 const Comments = props => (
-    
-    <div className="col-md-7" id="comments-container">
 
-       <ul>
+    <div className="col-md-7" id="comments-container">
+      <ul>
        <strong>comments:</strong> {props.comments}
        </ul>
 
-       {/* function FieldGroup({ id, label, help, ...props }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} />
-      {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
+      <Form>
+        < FormGroup>
+            <Label for="exampleText">What do you think the image is?</Label>
+            <Input type="textarea" name="text" id="exampleText" />
+          </FormGroup>
+         <Button>Submit</Button>
+      </Form>
 
-const formInstance = (
-  <form>
-    <FieldGroup
-      id="formControlsText"
-      type="text"
-      label="Your Guess"
-      placeholder="Enter text"
-    />
-    <Button type="submit">Submit</Button>
-  </form>
-);
-
-render(formInstance);
-        */}
     </div>
 )
 
