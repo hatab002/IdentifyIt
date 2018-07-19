@@ -32,7 +32,7 @@ class App extends Component {
   
   toggleCard = () => {
     this.setState ({
-      isHidden: !this.state.isHidden
+      isHidden: false
     })
     console.log("hello")
   }
@@ -99,7 +99,7 @@ googleResponse = (response) => {
             <div className="col-md-12">
               <div className="card-container">
       
-                {!this.state.isHidden && <Card        
+                {this.state.isHidden === false && <Card        
                   id={this.state.card.id}
                   image={this.state.card.filename}
                   comments= {this.state.card.text}
