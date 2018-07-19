@@ -32,7 +32,7 @@ class App extends Component {
   
   toggleCard = () => {
     this.setState ({
-      isHidden: false,
+      isHidden: false
     })
     console.log("hello")
   }
@@ -89,14 +89,12 @@ googleResponse = (response) => {
       <div className="App">
           <header>
             <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse}/>
-
             <Header/>
           </header>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
-
             </div>
           </div>
         </div>
@@ -105,7 +103,7 @@ googleResponse = (response) => {
             <div className="col-md-12">
               <div className="card-container">
       
-                {!this.state.isHidden && <Card        
+                {this.state.isHidden === false && <Card        
                   id={this.state.card.id}
                   image={this.state.card.filename}
                   comments= {this.state.card.text}

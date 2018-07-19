@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = props => (
     <div className="header-container">
         <div className="title">
-            <h1>W.I.T.T</h1>
+            <h1>IdentifyIt!</h1>
         </div>
 
         <div className="directions">
