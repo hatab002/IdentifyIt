@@ -42,7 +42,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
+app.set('view engine', 'html');
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -52,6 +52,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  // if (err) {
+  //   res.json({
+  //     message: err.message,
+  //     error: err});
+  //           }
 });
 
 // mongoose.Promise = global.Promise
