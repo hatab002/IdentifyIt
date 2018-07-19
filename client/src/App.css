@@ -1,11 +1,11 @@
 .App {
   text-align: center;
   font-family: 'Gaegu', cursive;
+  background-image: url("https://i.ytimg.com/vi/zQFwPAqmYMs/maxresdefault.jpg");
+  background-size: cover;
 }
 
 .card-container {
   height: 80%;
   margin: 2%;
-  border-top-style: solid;
-  border-top-color: black;
 }
