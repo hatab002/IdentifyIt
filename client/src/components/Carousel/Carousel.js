@@ -26,7 +26,7 @@ class Carousel extends React.Component {
                         <div 
                         className="col-md-4">
                         <img src={`${witt.filename}`} 
-                            alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(witt.id -1); props.toggleCard()}}></img>
+                            alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(witt._id); props.toggleCard()}}></img>
                     </div>
                     ))}
                 </div>
