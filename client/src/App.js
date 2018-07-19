@@ -27,7 +27,7 @@ class App extends Component {
     witts,
     card: witts[0],
     isAuthenticated: false,
-    isHidden: true
+    isHidden: true,
   };
   
   toggleCard = () => {
@@ -50,7 +50,13 @@ class App extends Component {
 
   updateCard = (i) =>{
     console.log("click")
-    this.setState({card: this.state.witts[i] ? this.state.witts[i]: this.state.card})
+    this.setState({card: {
+        id: i,
+        filename: this.state.witts.find(witt => witt._id === i).filename,
+        text: this.state.witts.find(witt => witt._id === i).text, 
+        imageHasBeenClicked: true,
+    }})
+
   }
 
 googleResponse = (response) => {
