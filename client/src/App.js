@@ -17,17 +17,12 @@ import "../src/utils/token.utils";
 import API from './utils/API';
 import socketIOClient from "socket.io-client";
 
-// let witts = [{
-//   "id": 1,
-//   "image": "https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg",
-//   "comments": "The coffe that stoped WWIII"
-// }]
 class App extends Component {
   state = {
     witts,
     card: witts[0],
     isAuthenticated: false,
-    isHidden: true
+    isHidden: true,
   };
   
   toggleCard = () => {
@@ -50,7 +45,13 @@ class App extends Component {
 
   updateCard = (i) =>{
     console.log("click")
-    this.setState({card: this.state.witts[i] ? this.state.witts[i]: this.state.card})
+    this.setState({card: {
+        id: i,
+        url: this.state.witts.find(witt => witt._id === i).url,
+        text: this.state.witts.find(witt => witt._id === i).text, 
+        imageHasBeenClicked: true,
+    }})
+
   }
 
 googleResponse = (response) => {
@@ -83,14 +84,12 @@ googleResponse = (response) => {
       <div className="App">
           <header>
             <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse}/>
-
             <Header/>
           </header>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
-
             </div>
           </div>
         </div>
@@ -101,7 +100,7 @@ googleResponse = (response) => {
       
                 {this.state.isHidden === false && <Card        
                   id={this.state.card.id}
-                  image={this.state.card.filename}
+                  image={this.state.card.url}
                   comments= {this.state.card.text}
                    />}
                   
