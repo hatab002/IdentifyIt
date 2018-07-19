@@ -6,9 +6,11 @@ import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
 import witts from "./witts.json";
+
 //passport
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json';
+import "../src/utils/token.utils";
 
 
 
@@ -52,7 +54,8 @@ googleResponse = (response) => {
         console.log('fetch init')
         const token = r.headers.get('x-auth-token');
         r.json().then(user => {
-            if (token) {
+            console.log('promise')
+            if (token) {                
                 console.log('state init')
                 this.setState({isAuthenticated: true, user, token})
             }
