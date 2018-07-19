@@ -22,10 +22,8 @@ module.exports = {
 
     create: (req, res) => {
         db.Picture
-        .create({
-            filename: req.file.filename,
-            user: req.body.user
-        }).then(dBModel => db.User.findByIdAndUpdate(
+        .create(req.body)
+        .then(dBModel => db.User.findByIdAndUpdate(
             dBModel.user,
             { $push: { pictures: dBModel._id } },
             { new: true}

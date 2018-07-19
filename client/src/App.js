@@ -83,14 +83,12 @@ googleResponse = (response) => {
       <div className="App">
           <header>
             <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse}/>
-
             <Header/>
           </header>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/>
-
             </div>
           </div>
         </div>
