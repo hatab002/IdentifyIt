@@ -15,6 +15,7 @@ import "../src/utils/token.utils";
 
 
 import API from './utils/API';
+import socketIOClient from "socket.io-client";
 
 class App extends Component {
   state = {
@@ -35,6 +36,8 @@ class App extends Component {
     API.getPictures()
       .then(res => this.setState( {pictures: res.data} ))
       .catch(err => console.log(err));
+    const socket = socketIOClient('http://localhost:3001')
+    socket.emit('hello')
   }
 
   updateCard = (i) =>{
