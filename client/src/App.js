@@ -17,11 +17,6 @@ import "../src/utils/token.utils";
 import API from './utils/API';
 import socketIOClient from "socket.io-client";
 
-// let witts = [{
-//   "id": 1,
-//   "image": "https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg",
-//   "comments": "The coffe that stoped WWIII"
-// }]
 class App extends Component {
   state = {
     witts,
@@ -52,7 +47,7 @@ class App extends Component {
     console.log("click")
     this.setState({card: {
         id: i,
-        filename: this.state.witts.find(witt => witt._id === i).filename,
+        url: this.state.witts.find(witt => witt._id === i).url,
         text: this.state.witts.find(witt => witt._id === i).text, 
         imageHasBeenClicked: true,
     }})
@@ -105,7 +100,7 @@ googleResponse = (response) => {
       
                 {this.state.isHidden === false && <Card        
                   id={this.state.card.id}
-                  image={this.state.card.filename}
+                  image={this.state.card.url}
                   comments= {this.state.card.text}
                    />}
                   
