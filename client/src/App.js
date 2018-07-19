@@ -23,9 +23,12 @@ class App extends Component {
   }
   
   componentDidMount() {
-    API.getPictures()
-      .then(res => this.setState( {pictures: res.data} ))
-      .catch(err => console.log(err));
+    // API.getPictures()
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setState( {pictures: res.data} )
+    //   })
+    //   .catch(err => console.log(err));
   }
 
   updateCard = (i) =>{
@@ -37,13 +40,13 @@ class App extends Component {
     return (
       <div className="App">
           <header>
-            <Nav isLoggedIn={false}/>
+            <Nav isLoggedIn={false} />
             <Header/>
           </header>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              {/* <Carousel toggleCard={this.toggleCard} pictures={this.state.pictures} updateCard={this.updateCard}/> */}
+              {/* <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard}/> */}
 
             </div>
           </div>
