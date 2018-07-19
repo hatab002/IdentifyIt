@@ -5,17 +5,21 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
+//passport
+import { GoogleLogin } from 'react-google-login';
+import config from './config.json';
 import API from './utils/API';
 
-let witts = [{
-  "id": 1,
-  "image": "https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg",
-  "comments": "The coffe that stoped WWIII"
-}]
+// let witts = [{
+//   "id": 1,
+//   "image": "https://media.self.com/photos/5aeb2496a982843a568c9dab/4:3/w_728,c_limit/extreme-morning-person.jpg",
+//   "comments": "The coffe that stoped WWIII"
+// }]
 class App extends Component {
   state = {
     witts,
     card: witts[0],
+    isAuthenticated: false,
     isHidden: true
   };
   
@@ -40,11 +44,36 @@ class App extends Component {
     this.setState({card: this.state.witts[i] ? this.state.witts[i]: this.state.card})
   }
 
+googleResponse = (response) => {
+    const tokenBlob = new Blob([JSON.stringify({email:response.w3.U3, username:response.w3.ig}, null, 2)], {type : 'application/json'});
+    const options = {
+        method: 'POST',
+        body: tokenBlob,
+        mode: 'cors',
+        cache: 'default'
+    };
+    fetch('/api/users', options).then(r => {
+        console.log('fetch init')
+        const token = r.headers.get('x-auth-token');
+        r.json().then(user => {
+            if (token) {
+                console.log('state init')
+                this.setState({isAuthenticated: true, user, token})
+            }
+            console.log(user)
+        });
+        console.log(r)
+    })
+    console.log(response)
+  };
+
+
   render() {
     return (
       <div className="App">
           <header>
-            <Nav isLoggedIn={false}/>
+            <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse}/>
+
             <Header/>
           </header>
         <div className="container">
@@ -76,7 +105,56 @@ class App extends Component {
       </div>
     );
   }
+
+  //Passport
+
+//   constructor() {
+//     super();
+//     this.state = { isAuthenticated: false, user: null, token: ''};
+// }
+
+// logout = () => {
+//     this.setState({isAuthenticated: false, token: '', user: null})
+// };
+
+// onFailure = (error) => {
+//     alert(error);
+// };
+
+
+
+// render() {
+//   let content = !!this.state.isAuthenticated ?
+//           (
+//               <div>
+//                   <p>Authenticated</p>
+//                   <div>
+//                       {this.state.user.email}
+//                   </div>
+//                   <div>
+//                       <button onClick={this.logout} className="button">
+//                           Log out
+//                       </button>
+//                   </div>
+//               </div>
+//           ) :
+//           (
+//               <div>
+                  
+                
+//               </div>
+//           );
+
+//       return (
+//           <div className="App">
+//               {content}
+//           </div>
+//       );
+//   }
+
 }
+
+
 
 export default App;
 
