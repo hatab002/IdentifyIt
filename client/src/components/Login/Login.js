@@ -61,10 +61,6 @@ const Login = (props) => (
         </div>
       <div className="modal-body">
         <form>
-          {/* <div className="form-group">
-            <label for="username">Username</label>
-              <input type="text" className="form-control" id="loginUsername" aria-describedby="" placeholder="Username"></input>
-          </div> */}
         {/* <div className="form-group">
             <label for="login-password">Password</label>
               <input type="password" className="form-control" id="loginPassword" placeholder="Password"></input>
@@ -72,7 +68,7 @@ const Login = (props) => (
         <div className="fa fa-google-plus">
         <GoogleLogin
                       clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
-                      buttonText="Google+"
+                      buttonText="Login with Google"
                       onSuccess={props.googleResponse}
                       onFailure={props.googleResponse}
                   />

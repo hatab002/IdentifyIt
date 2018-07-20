@@ -9,9 +9,9 @@ import Footer from './components/Footer';
 import witts from "./witts.json";
 
 //passport
-import { GoogleLogin } from 'react-google-login';
-import config from './config.json';
-import "../src/utils/token.utils";
+// import { GoogleLogin } from 'react-google-login';
+// import config from './config.json';
+// import "../src/utils/token.utils";
 
 
 import API from './utils/API';
@@ -23,6 +23,7 @@ class App extends Component {
     card: witts[0],
     isAuthenticated: false,
     isHidden: true,
+    userId: ""
   };
   
   toggleCard = () => {
@@ -55,27 +56,44 @@ class App extends Component {
   }
 
 googleResponse = (response) => {
-    const tokenBlob = new Blob([JSON.stringify({email:response.w3.U3, username:response.w3.ig}, null, 2)], {type : 'application/json'});
-    const options = {
-        method: 'POST',
-        body: tokenBlob,
-        mode: 'cors',
-        cache: 'default'
-    };
-    fetch('/api/users', options).then(r => {
-        console.log('fetch init')
-        const token = r.headers.get('x-auth-token');
-        r.json().then(user => {
-            console.log('promise')
-            if (token) {                
-                console.log('state init')
-                this.setState({isAuthenticated: true, user, token})
-            }
-            console.log(user)
-        });
-        console.log(r)
-    })
-    console.log(response)
+    // const tokenBlob = new Blob([JSON.stringify({email:response.w3.U3, username:response.w3.ig}, null, 2)], {type : 'application/json'});
+    // const options = {
+    //     method: 'POST',
+    //     body: tokenBlob,
+    //     mode: 'cors',
+    //     cache: 'default'
+    // };
+    // fetch('/api/users', options).then(r => {
+    //     const token = r.headers.get('x-auth-token');
+    //     r.json().then(user => {
+    //         // console.log('promise')
+    //         // if (token) {                
+    //         //     console.log('state init')
+    //             this.setState({isAuthenticated: true, userId: user._id, user, token})
+    //         // }
+    //         // console.log(user)
+    //     });
+    // })
+
+    API.getUserByEmail(response.w3.U3)
+      .then(existingUser => { 
+        if (existingUser.data) {  // if user already exists in our DB, set state with their info
+          this.setState({
+            isAuthenticated: existingUser.status = 200 ? true : false,
+            userId: existingUser.data._id,
+            user: existingUser.data.username
+          });
+        } else {  // if user doesn't already exist in our DB, save their info to our DB
+          API.saveUser({
+            email: response.w3.U3,
+            username: response.w3.ig
+          }).then(newUser => this.setState({
+            isAuthenticated: newUser.status = 200 ? true : false,
+            userId: newUser.data._id,
+            user: newUser.data.username
+          }));
+        }
+      });
   };
 
 
@@ -83,7 +101,7 @@ googleResponse = (response) => {
     return (
       <div className="App">
           <header>
-            <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse}/>
+            <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse} userId={this.state.userId}/>
             <Header/>
           </header>
         <div className="container">

@@ -6,37 +6,53 @@ import API from "../../utils/API";
 class Submit extends Component {
 
   state = {
-    url: ""
+    url: "",
+    description: ""
   }
 
   saveUrl = (url) => {
-    this.setState({url});
+    this.setState({ url });
   }
 
   submitPicture = () => {
     API.savePicture({
       url: this.state.url,
-      user: "5b46afd6bd8c5f194cb62df5" // TODO: NEED TO PASS USER ID FROM PROPS/STATE
-    }).then(res => console.log(res));
+      description: this.state.description,
+      user: this.props.userId
+    }).then(res => this.setState({ description: "" }));
   }
+
+  handleInputChange = event => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+  };
 
   render() {
     return (
-      <div className="modal fade" id="submitPhoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal fade" id="submitPhoto" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">Submit a Photo!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body">
-              <Uploader id="picture" name="file" data-images-only onChange={value => this.saveUrl(value)} />
+              <form>
+                <div className="form-group">
+                  <label htmlFor="pictureDescription">Description</label>
+                  <textarea className="form-control" id="pictureDescription" rows="3" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder="Please include any additional information you can provide to help users identify it"></textarea>
+                </div>
+              </form>
+              <Uploader id="picture" name="file" data-images-only data-clearable onChange={value => this.saveUrl(value)} />
             </div>
             <div className="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" onClick={this.submitPicture}>Submit</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.submitPicture}>Submit</button>
             </div>
           </div>
         </div>
