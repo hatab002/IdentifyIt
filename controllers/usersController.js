@@ -18,6 +18,14 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
 
+    findByEmail: (req, res) => {
+        db.User
+        .findOne({email: req.params.id})
+        .populate("pictures")
+        .then(dBModel => res.json(dBModel))
+        .catch(err => res.status(422).json(err));
+    },
+
     create: (req, res) => {
         console.log('created user', req.body)
         db.User

@@ -9,7 +9,7 @@ const Card = props => (
             <div className="col-md-12" id="card">
                 <div className="row">
                     <div className="col-md-5">
-                        <img id="selected-image" src={props.image} alt="image-holder"/>
+                        <img id="selected-image" src={props.image} />
                     </div>
                     <Comments 
                     comments={props.comments}/>

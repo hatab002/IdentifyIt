@@ -26,7 +26,7 @@ class Uploader extends Component {
   render() {
     const {id, name, ...attrs} = this.props;
 
-    return (<input type="hidden" id={id} name={name} {...attrs} />)
+    return (<input type="hidden" id={id} name={name} {...attrs} value={this.props.value}/>)
   }
 }
 
