@@ -91,7 +91,7 @@ googleResponse = (response) => {
             user: newUser.data.username
           }));
         }
-      });
+      })
   };
 
 
