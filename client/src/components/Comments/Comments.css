@@ -35,3 +35,20 @@ form {
     width: 75px;
     margin-left: 75%;
 }
+#upvote-badge {
+    background-color: lightgray;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+#arrow-up, #arrow-down {
+    padding: 3px;
+}
+
+#arrow-up:hover {
+    color: green;
+}
+
+#arrow-down:hover {
+    color: red;
+}
