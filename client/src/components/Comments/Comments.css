@@ -1,8 +1,33 @@
 .comments-container {
-    position: relative;
-    bottom: 175px;
-    left: 500px;
     border-style: solid;
     width: 500px;
     height: 150px;
+}
+
+form {
+    margin-top: 5%;
+    padding: 10px;
+    border-style: solid;
+    border-width: .15px;
+    background-color: #FFFD57;
+}
+
+.comment-list {
+    margin-top: 5%;
+    text-align: left;
+    border-style: solid;
+    border-width: .15px;
+    padding: 10px;
+}
+
+#comment-submit {
+    background-color: #81ea8b;
+    border-style: none;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
+    width: 75px;
+    margin-left: 75%;
 }
