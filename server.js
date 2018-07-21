@@ -24,6 +24,11 @@ app.use(index);
 
 io.on("connection", (socket) => {
   console.log("A user connected");
+  socket.emit("message", "you are connected")
+  socket.on('message', function (message) {
+        
+    }); 
+  
   socket.on("disconnect", () => console.log("User disconnected"));
   
 }); 
