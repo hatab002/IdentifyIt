@@ -6,7 +6,6 @@ import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
 
-import witts from "./witts.json";
 
 //passport
 // import { GoogleLogin } from 'react-google-login';
@@ -19,8 +18,8 @@ import socketIOClient from "socket.io-client";
 
 class App extends Component {
   state = {
-    witts,
-    card: witts[0],
+    witts: [{}],
+    card: {},
     isAuthenticated: false,
     isHidden: true,
     userId: ""
@@ -48,9 +47,17 @@ class App extends Component {
   }
 
   updateCard = (i) =>{
-    console.log("click")
+    console.log("old card vv")
+    console.log(this.state.card)
     const newCard = this.state.witts.find(witt => witt._id === i)
-    this.setState({card: newCard})
+    const clonedNewCard = {...newCard}
+
+    console.log("new CARD below ------")
+    console.log(clonedNewCard)
+
+    this.setState({card: clonedNewCard})
+    
+    
   }
 
 googleResponse = (response) => {
