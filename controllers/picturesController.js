@@ -6,7 +6,13 @@ module.exports = {
     findAll: (req, res) => {
         db.Picture
         .find({})
-        .populate("comments")
+        .populate({
+            path: "comments",
+            populate: { 
+                path: "user",
+                select: "username"
+            }
+        })
         .sort({ date: -1 })
         .then(dBModel => {console.log(dBModel);res.json(dBModel)})
         .catch(err => res.status(422).json(err));

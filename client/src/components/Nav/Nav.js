@@ -9,7 +9,7 @@ import "./Nav.css";
 class Nav extends Component {
 
   googleResponse = (response) => {
-    this.props.createUser(response.w3.U3, response.w3.ig);
+    this.props.loginUser(response.w3.U3);
   };
 
   render() {
@@ -40,7 +40,7 @@ class Nav extends Component {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
             <div className="col-md-2">
-              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target={this.props.isLoggedIn ? "#submitPhoto" : "#userLogin"}>Submit a Photo</p>
+              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target={this.props.isLoggedIn ? "#submitPhoto" : "#createAccount"}>Submit a Photo</p>
             </div>
             <Submit />
             <div className="col-md-6"></div>
@@ -55,7 +55,7 @@ class Nav extends Component {
               />
           </div>
         </nav>
-        <Login googleResponse={this.props.googleResponse} createUser={this.props.createUser} />
+        <Login createUser={this.props.createUser} />
       </div>
       )
     )
