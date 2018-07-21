@@ -1,51 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
 import Login from '../Login';
 import Submit from '../Submit';
+import { GoogleLogin } from 'react-google-login';
 import "./Nav.css";
 
 
 
-const Nav = (props) => {
+class Nav extends Component {
 
-  return(
+  googleResponse = (response) => {
+    this.props.createUser(response.w3.U3, response.w3.ig);
+  };
 
-  props.isLoggedIn ?
+  render() {
 
-    (<div>
-      <nav className="navbar navbar-expand-lg">
-        <div className="container">
-          <div className="col-md-1">
-            <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
+    return (
+      
+      this.props.isLoggedIn ?
+      
+      (<div>
+        <nav className="navbar navbar-expand-lg">
+          <div className="container">
+            <div className="col-md-1">
+              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
+            </div>
+            <div className="col-md-1">
+              <p id="my-things" className="navbar-brand" data-toggle="modal">My Things</p>
+            </div>
+            <Submit userId={this.props.userId} />
+            <div className="col-md-2">
+              <p id="sign-out" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Sign Out</p>
+            </div>
           </div>
-          <div className="col-md-1">
-            <p id="my-things" className="navbar-brand" data-toggle="modal">My Things</p>
+        </nav>
+      </div>
+      ) :
+      
+      (<div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container">
+            <div className="col-md-2">
+              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target={this.props.isLoggedIn ? "#submitPhoto" : "#userLogin"}>Submit a Photo</p>
+            </div>
+            <Submit />
+            <div className="col-md-6"></div>
+            <div className="col-md-1">
+              <p id="login" className="navbar-brand" data-toggle="modal" data-target="#createAccount">Create Account</p>
+            </div>
+            <GoogleLogin
+              clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
+              buttonText="Log In"
+              onSuccess={this.googleResponse}
+              onFailure={this.googleResponse}
+              />
           </div>
-          <Submit userId={props.userId}/>
-          <div className="col-md-2">
-            <p id="sign-out" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Sign Out</p>
-          </div>
-        </div>
-      </nav>
-    </div>
-    ) :
-
-    (<div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container">
-          <div className="col-md-2">
-            <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
-          </div>
-          <Submit />
-          <div className="col-md-6"></div>
-          <div className="col-md-1">
-            <p id="login" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Log In</p>
-          </div>
-        </div>
-      </nav>
-      <Login googleResponse={props.googleResponse} />
-    </div>
+        </nav>
+        <Login googleResponse={this.props.googleResponse} createUser={this.props.createUser} />
+      </div>
+      )
     )
-  )
+  }
 }
 
 export default Nav;
