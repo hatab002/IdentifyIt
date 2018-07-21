@@ -23,9 +23,10 @@ class Carousel extends React.Component {
             <div className="carousel-item active">
                 <div className="row">
                     {this.shutter(props.witts, this.state.start).map((witt, index) => (
-                        <div 
-                        className="col-md-4">
-                        <img src={`${witt.url}`} 
+                        <div
+                        className="col-md-4"
+                        key={index}>
+                        <img src={witt.url} key={index} 
                             alt="First slide" className="image-responsive" onClick={()=> {props.updateCard(witt._id); props.toggleCard()}}></img>
                     </div>
                     ))}
