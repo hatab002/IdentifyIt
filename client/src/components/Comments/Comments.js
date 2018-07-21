@@ -12,6 +12,10 @@ class Comments extends Component {
     this.setState({ comments: this.props.comments });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ comments: nextProps.comments})
+  }
+
   submitComment = event => {
     event.preventDefault();
     API.saveComment({
@@ -30,6 +34,7 @@ class Comments extends Component {
   };
 
   render() {
+    console.log(this.state.comments)
     return (
 
       <div className="col-md-7" id="comments-container">
