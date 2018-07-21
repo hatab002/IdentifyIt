@@ -49,13 +49,8 @@ class App extends Component {
 
   updateCard = (i) =>{
     console.log("click")
-    this.setState({card: {
-        id: i,
-        url: this.state.witts.find(witt => witt._id === i).url,
-        text: this.state.witts.find(witt => witt._id === i).text, 
-        imageHasBeenClicked: true,
-    }})
-
+    const newCard = this.state.witts.find(witt => witt._id === i)
+    this.setState({card: newCard})
   }
 
 googleResponse = (response) => {
@@ -120,9 +115,11 @@ googleResponse = (response) => {
               <div className="card-container">
       
                 {this.state.isHidden === false && <Card        
-                  id={this.state.card.id}
+                  pictureId={this.state.card._id}
+                  description={this.state.card.description}
                   image={this.state.card.url}
-                  comments= {this.state.card.text}
+                  comments= {this.state.card.comments}
+                  userId={this.state.userId}
                    />}
                   
               </div>

@@ -17,7 +17,11 @@ form {
     text-align: left;
     border-style: solid;
     border-width: .15px;
-    padding: 10px;
+    padding-bottom: 1px;
+}
+
+.comments-header {
+    margin: 10px;
 }
 
 #comment-submit {
