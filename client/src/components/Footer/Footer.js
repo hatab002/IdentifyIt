@@ -12,9 +12,3 @@ const Footer = props => (
 );
 
 export default Footer;
-
-<footer className="footer">
-    <div className="bottom">
-        Clicky Game
-    </div>
-</footer>
