@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
+import Alert from './components/Alert';
 
 import witts from "./witts.json";
 
@@ -23,7 +24,14 @@ class App extends Component {
     card: witts[0],
     isAuthenticated: false,
     isHidden: true,
-    userId: ""
+    userId: "",
+    email: "",
+    user: "",
+    alert: {
+      show: false,
+      boldText: "",
+      otherText: ""
+    }
   };
   
   toggleCard = () => {
@@ -50,56 +58,41 @@ class App extends Component {
   updateCard = (i) =>{
     console.log("click")
     const newCard = this.state.witts.find(witt => witt._id === i)
+    console.log(newCard);
     this.setState({card: newCard})
   }
 
-googleResponse = (response) => {
-    // const tokenBlob = new Blob([JSON.stringify({email:response.w3.U3, username:response.w3.ig}, null, 2)], {type : 'application/json'});
-    // const options = {
-    //     method: 'POST',
-    //     body: tokenBlob,
-    //     mode: 'cors',
-    //     cache: 'default'
-    // };
-    // fetch('/api/users', options).then(r => {
-    //     const token = r.headers.get('x-auth-token');
-    //     r.json().then(user => {
-    //         // console.log('promise')
-    //         // if (token) {                
-    //         //     console.log('state init')
-    //             this.setState({isAuthenticated: true, userId: user._id, user, token})
-    //         // }
-    //         // console.log(user)
-    //     });
-    // })
-
-    API.getUserByEmail(response.w3.U3)
+  createUser = (email, username) => {
+    API.getUserByEmail(email)
       .then(existingUser => { 
-        if (existingUser.data) {  // if user already exists in our DB, set state with their info
+        if (existingUser.data) {  // if user already exists in our DB, tell user to login instead
           this.setState({
-            isAuthenticated: existingUser.status = 200 ? true : false,
-            userId: existingUser.data._id,
-            user: existingUser.data.username
+            alert: {
+              show: true,
+              boldText: "User already exists!",
+              otherText: "Please login with your existing account."
+            }
           });
         } else {  // if user doesn't already exist in our DB, save their info to our DB
           API.saveUser({
-            email: response.w3.U3,
-            username: response.w3.ig
+            email,
+            username
           }).then(newUser => this.setState({
             isAuthenticated: newUser.status = 200 ? true : false,
             userId: newUser.data._id,
             user: newUser.data.username
           }));
         }
-      });
-  };
+    });
+  }
 
 
   render() {
     return (
       <div className="App">
           <header>
-            <Nav isLoggedIn={this.state.isAuthenticated} googleResponse={this.googleResponse} userId={this.state.userId}/>
+            <Nav isLoggedIn={this.state.isAuthenticated} createUser={this.createUser} userId={this.state.userId}/>
+            <Alert alert={this.state.alert} />
             <Header/>
           </header>
         <div className="container">
