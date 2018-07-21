@@ -1,5 +1,5 @@
 #card {
-    height: 250px;
+    height: 450px;
     margin-top: 5%;
     background-color: white;
     border-style: groove;
@@ -8,8 +8,12 @@
 }
 
 #selected-image{
-    width: 250px;
-    height: 200px;
+    width: 350px;
+    height: 300px;
     margin-top: 6%;
+    border-style: groove;
+    border-color: black;
+    border-width: .5px;
+    padding: 1%;
 
 }
