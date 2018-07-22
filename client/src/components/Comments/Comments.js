@@ -28,19 +28,25 @@ class Comments extends Component {
   }
 
   upvoteComment = (commentId, newUpvoteCount) => {
-   // event.preventDefault();
     
      API.updateComment(commentId, {
        upvoteCount: newUpvoteCount +1
-     }).then(res => console.log(res));
+     }).then(res => this.setState(this.state.comments.map(upvote => {
+       if (commentId === upvote._id) {
+         upvote.upvoteCount ++
+       }
+     })));
   }
 
   downvoteComment = (commentId, newUpvoteCount) => {
-    // event.preventDefault();
-     
+
       API.updateComment(commentId, {
         upvoteCount: newUpvoteCount -1
-      }).then(res => console.log(res));
+      }).then(res => this.setState(this.state.comments.map(upvote => {
+        if (commentId === upvote._id) {
+          upvote.upvoteCount --
+        }
+      })));
    }
 
   handleInputChange = event => {

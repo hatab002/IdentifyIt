@@ -48,6 +48,7 @@ class App extends Component {
       })
       .catch(err => console.log(err));
     const socket = socketIOClient('http://localhost:3001')
+
     socket.on("message", (message) => {
       alert("the server has a message for you: " + message)
     });
