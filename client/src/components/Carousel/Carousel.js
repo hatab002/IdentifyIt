@@ -23,6 +23,7 @@ class Carousel extends React.Component {
             <div className="carousel-item active">
                 <div className="row">
                     {this.shutter(props.witts, this.state.start).map((witt, index) => (
+
                         <div 
                         className="col-md-4"
                         key={witt._id}>
