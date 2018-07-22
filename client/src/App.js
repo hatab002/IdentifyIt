@@ -26,11 +26,9 @@ class App extends Component {
     userId: "",
     email: "",
     user: "",
-    alert: {
-      show: false,
-      boldText: "",
-      otherText: ""
-    }
+    alertShow: false,
+    alertBoldText: "",
+    alertOtherText: ""
   };
 
   toggleCard = () => {
@@ -47,7 +45,6 @@ class App extends Component {
         this.setState({ witts: res.data, card: res.data[0] ? res.data[0] : this.state.card })
       })
       .catch(err => console.log(err));
-
   }
 
   updateCard = (i) => {
@@ -64,16 +61,30 @@ class App extends Component {
 
   }
 
+  myThings = () => {
+    API.getUser(this.state.userId)
+      .then(res => {
+        if (res.data.pictures) {
+          this.setState({ witts: res.data.pictures, card: res.data[0] ? res.data[0] : this.state.card })
+        } else {
+          this.setState({
+            alertShow: true,
+            alertBoldText: "You have no pictures!",
+            alertOtherText: "Submit a picture to try to get it identified."
+          })
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
   createUser = (email, username) => {
     API.getUserByEmail(email)
       .then(existingUser => {
         if (existingUser.data) {  // if user already exists in our DB, tell user to login instead
           this.setState({
-            alert: {
-              show: true,
-              boldText: "User already exists!",
-              otherText: "Please login with your existing account."
-            }
+            alertShow: true,
+            alertBoldText: "User already exists!",
+            alertOtherText: "Please login with your existing account."
           });
         } else {  // if user doesn't already exist in our DB, save their info to our DB
           API.saveUser({
@@ -103,23 +114,24 @@ class App extends Component {
           });
         } else {  // if user doesn't exist in our DB, alert them to create account
           this.setState({
-            alert: {
-              show: true,
-              boldText: "User does not exist!",
-              otherText: "Please create an account."
-            }
+            alertShow: true,
+            alertBoldText: "User does not exist!",
+            alertOtherText: "Please create an account."
           });
         }
       });
   }
 
+  hideAlert = () => {
+    this.setState({ alertShow: false });
+  }
 
   render() {
     return (
       <div className="App">
         <header>
-          <Nav isLoggedIn={this.state.isAuthenticated} createUser={this.createUser} loginUser={this.loginUser} userId={this.state.userId} />
-          <Alert alert={this.state.alert} />
+          <Nav isLoggedIn={this.state.isAuthenticated} createUser={this.createUser} loginUser={this.loginUser} userId={this.state.userId} myThings={this.myThings}/>
+          <Alert alertShow={this.state.alertShow} alertBoldText={this.state.alertBoldText} alertOtherText={this.state.alertOtherText} hideAlert={this.hideAlert}/>
           <Header />
         </header>
         <div className="container">

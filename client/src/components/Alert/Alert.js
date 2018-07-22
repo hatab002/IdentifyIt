@@ -3,12 +3,12 @@ import React from "react";
 const Alert = props => {
     return (
         <div>
-            {props.alert.show &&
+            {props.alertShow &&
             <div className="container">
                 <br />
                 <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>User already exists!</strong> Please login with your existing account.
-                    <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                    <strong>{props.alertBoldText}</strong> {props.alertOtherText}
+                    <button type="button" className="close" onClick={() => props.hideAlert()} aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
