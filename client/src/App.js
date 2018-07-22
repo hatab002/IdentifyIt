@@ -47,10 +47,7 @@ class App extends Component {
         this.setState({ witts: res.data, card: res.data[0] ? res.data[0] : this.state.card })
       })
       .catch(err => console.log(err));
-    const socket = socketIOClient('http://localhost:3001')
-    socket.on("message", (message) => {
-      alert("the server has a message for you: " + message)
-    });
+
 
   }
 
@@ -100,6 +97,10 @@ class App extends Component {
             isAuthenticated: existingUser.status = 200 ? true : false,
             userId: existingUser.data._id,
             user: existingUser.data.username
+          });
+          const socket = socketIOClient('http://localhost:3001')
+          socket.on("message", (message) => {
+            alert(message + this.state.user)
           });
         } else {  // if user doesn't exist in our DB, alert them to create account
           this.setState({

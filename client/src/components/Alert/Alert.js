@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = props => {
+const Alert = props => {
     return (
         <div>
             {props.alert.show &&
@@ -18,4 +18,4 @@ const Card = props => {
     )
 };
 
-export default Card;
+export default Alert;
