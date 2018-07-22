@@ -71,12 +71,15 @@ class Comments extends Component {
         <ul className="comment-list list-group list-group-flush">
           {this.state.comments.map(comment => (
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
-              {comment.user.username}
-              {comment.text}
-              <span id="upvote-badge" className="badge badge-primary badge-pill">
+             <span className="comment-span">
+             <p className="username">{comment.user.username}</p>
+            <p className="comment-text">{comment.text}</p>
+            </span>
+              <span className="badge badge-primary badge-pill" key={comment._id}>              
               <i id="arrow-up" className="fas fa-arrow-alt-circle-up" onClick={() => this.upvoteComment(comment._id, comment.upvoteCount)}/>
-              <i id="arrow-down" className="fas fa-arrow-alt-circle-down" onClick={() => this.downvoteComment(comment._id, comment.upvoteCount)} /></span>
-              <span className="badge badge-primary badge-pill" key={comment._id}>{comment.upvoteCount}</span>
+              <i id="arrow-down" className="fas fa-arrow-alt-circle-down" onClick={() => this.downvoteComment(comment._id, comment.upvoteCount)} />
+              {comment.upvoteCount}
+              </span>
             </li>
           ))}
         </ul>

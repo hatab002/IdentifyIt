@@ -43,6 +43,13 @@ form {
 
 #arrow-up, #arrow-down {
     padding: 3px;
+    color: white;
+    font-size: 12px;
+}
+
+#arrow-down {
+    margin-right: 5%;
+    font-size: 12px;
 }
 
 #arrow-up:hover {
@@ -51,4 +58,27 @@ form {
 
 #arrow-down:hover {
     color: red;
+}
+
+.username {
+    color: red;
+    margin: 0;
+    margin-top: 5%;
+}
+
+.comment-list {
+    overflow: scroll;
+    max-height: 225px;
+}
+
+.list-group-item {
+   min-height: 60px;
+    max-height: 60px;
+}
+
+.badge {
+    background-color: lightgray;
+    width: 65px;
+    color: dodgerblue;
+    font-size: 15px;
 }
