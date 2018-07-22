@@ -25,7 +25,7 @@ class Nav extends Component {
               <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
             </div>
             <div className="col-md-1">
-              <p id="my-things" className="navbar-brand" data-toggle="modal">My Things</p>
+              <p id="my-things" className="navbar-brand" onClick={() => this.props.myThings()}>My Things</p>
             </div>
             <Submit userId={this.props.userId} />
             <div className="col-md-2">
