@@ -60,12 +60,12 @@ class Comments extends Component {
           <div className="form-group">
             <textarea className="form-control" id="comment" rows="3" name="newComment" value={this.state.newComment} onChange={this.handleInputChange} placeholder="What do you think it is?"></textarea>
           </div>
-          <button id="comment-submit" type="button" className="btn btn-primary" data-toggle="modal" data-target={this.props.isLoggedIn ? "" : "#userLogin"} onClick={this.submitComment}>Submit</button>
+          <button id="comment-submit" type="button" className="btn btn-primary" data-toggle="modal" data-target={this.props.isLoggedIn ? "" : "#createAccount"} onClick={this.submitComment}>Submit</button>
         </form>
         <ul className="comment-list list-group list-group-flush">
           {this.state.comments.map(comment => (
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
-              {comment.user}
+              {comment.user.username}
               {comment.text}
               <span id="upvote-badge" className="badge badge-primary badge-pill">
               <i id="arrow-up" className="fas fa-arrow-alt-circle-up" onClick={() => this.upvoteComment(comment._id, comment.upvoteCount)}/>
