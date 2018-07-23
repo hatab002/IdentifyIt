@@ -127,6 +127,14 @@ class App extends Component {
       });
   }
 
+  logoutUser = () => {
+        this.setState({
+          isAuthenticated: false,
+          alertShow: true,
+          alertBoldText: "You are logged out."
+        })
+  }
+    
   hideAlert = () => {
     this.setState({ alertShow: false });
   }
@@ -135,8 +143,15 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <Nav isLoggedIn={this.state.isAuthenticated} createUser={this.createUser} loginUser={this.loginUser} userId={this.state.userId} myThings={this.myThings}/>
-          <Alert alertShow={this.state.alertShow} alertBoldText={this.state.alertBoldText} alertOtherText={this.state.alertOtherText} hideAlert={this.hideAlert}/>
+          <Nav 
+          isLoggedIn={this.state.isAuthenticated} 
+          createUser={this.createUser} 
+          loginUser={this.loginUser}
+          logoutUser={this.logoutUser} 
+          userId={this.state.userId} 
+          myThings={this.myThings}/>
+          <Alert 
+          alertShow={this.state.alertShow} alertBoldText={this.state.alertBoldText} alertOtherText={this.state.alertOtherText} hideAlert={this.hideAlert}/>
           <Header />
         </header>
         <div className="container">

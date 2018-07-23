@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Login from '../Login';
 import Submit from '../Submit';
 import { GoogleLogin } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 import "./Nav.css";
 
 
@@ -11,6 +12,11 @@ class Nav extends Component {
   googleResponse = (response) => {
     this.props.loginUser(response.w3.U3);
   };
+
+  googleLogout = (response) => {
+    console.log("logout init")
+    // this.props.logoutUser()
+  }
 
   render() {
 
@@ -28,9 +34,15 @@ class Nav extends Component {
               <p id="my-things" className="navbar-brand" onClick={() => this.props.myThings()}>My Things</p>
             </div>
             <Submit userId={this.props.userId} />
-            <div className="col-md-2">
+            {/* <div className="col-md-2">
               <p id="sign-out" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Sign Out</p>
-            </div>
+            </div>             */}
+            <GoogleLogout
+              buttonText="Logout"
+              onLogoutSuccess={this.props.logoutUser}
+              className="col-md-1 "
+              style={{fontFamily:"Roboto"}}
+            />
           </div>
         </nav>
       </div>
@@ -47,12 +59,23 @@ class Nav extends Component {
             <div className="col-md-1">
               <p id="login" className="navbar-brand" data-toggle="modal" data-target="#createAccount">Create Account</p>
             </div>
-            <GoogleLogin
+            <GoogleLogin              
+              className="col-md-1"
               clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
-              buttonText="Log In"
+              buttonText="Login with Google"
               onSuccess={this.googleResponse}
               onFailure={this.googleResponse}
-              />
+              style={{fontFamily:"Gaegu", cursor: "pointer",
+              color: "#81ea8b",
+              textShadow:
+              ["-.5px -.5px 0 black",
+              ".5px -.5px 0 black",
+              "-.5px .5px 0 black",
+              ".5px .5px 0 black"],
+              background:  "#FFFD57",
+              border: "0px"
+            }}
+            />
           </div>
         </nav>
         <Login createUser={this.props.createUser} />
