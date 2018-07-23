@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Comments.css";
 import API from "../../utils/API";
+import socketIOClient from "socket.io-client";
 
 class Comments extends Component {
   state = {
@@ -25,6 +26,10 @@ class Comments extends Component {
         user: this.props.userId
       }).then(res => this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) }));
     }
+    const socket = socketIOClient('http://localhost:3001')
+      socket.on("new_comment", (comment) =>{
+        alert(comment + this.state.newComment)
+      });
   }
 
   upvoteComment = (commentId, newUpvoteCount) => {
