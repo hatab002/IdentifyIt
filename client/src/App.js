@@ -110,7 +110,12 @@ class App extends Component {
           });
           const socket = socketIOClient('http://localhost:3001')
           socket.on("message", (message) => {
-            alert(message + this.state.user)
+            this.setState({
+              alertShow: true,
+              alertBoldText: message,
+              alertOtherText: this.state.user
+            })
+            // alert(message + this.state.user)
           });
         } else {  // if user doesn't exist in our DB, alert them to create account
           this.setState({

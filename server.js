@@ -25,9 +25,9 @@ app.use(index);
 io.on("connection", (socket) => {
   console.log("A user connected");
   socket.emit("message", `Welcome to IdentifyIt `)
-  socket.on("new_comment",(comment) =>{
-    socket.broadcast.emit("show_comment", `New Comment: `)
-  })
+  socket.broadcast.emit("new_comment", `New Comment: `)
+  // socket.on("new_comment",(comment) =>{
+  // })
   // socket.on('new_notification', function (data) {
   //   io.sockets.emit('notification', {
   //     title: title.data,

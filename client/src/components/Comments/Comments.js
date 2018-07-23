@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import "./Comments.css";
 import API from "../../utils/API";
 import socketIOClient from "socket.io-client";
+import Alert from '../Alert';
+
 
 class Comments extends Component {
   state = {
     newComment: "",
-    comments: []
+    comments: [],
+    alertShow: false,
+    alertBoldText: "",
+    alertOtherText: ""
   }
 
   componentDidMount() {
@@ -25,11 +30,16 @@ class Comments extends Component {
         picture: this.props.pictureId,
         user: this.props.userId
       }).then(res => this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) }));
+      const socket = socketIOClient('http://localhost:3001')
+        socket.on("new_comment", (new_comment) =>{
+          // alert(comment + this.state.newComment)
+          this.setState({
+            alertShow: true,
+            alertBoldText: new_comment,
+            alertOtherText: this.state.newComment
+          })
+        });
     }
-    const socket = socketIOClient('http://localhost:3001')
-      socket.on("new_comment", (comment) =>{
-        alert(comment + this.state.newComment)
-      });
   }
 
   upvoteComment = (commentId, newUpvoteCount) => {
@@ -67,6 +77,7 @@ class Comments extends Component {
     return (
 
       <div className="col-md-7" id="comments-container">
+          <Alert alertShow={this.state.alertShow} alertBoldText={this.state.alertBoldText} alertOtherText={this.state.alertOtherText} hideAlert={this.hideAlert}/>
         <form>
           <div className="form-group">
             <textarea className="form-control" id="comment" rows="3" name="newComment" value={this.state.newComment} onChange={this.handleInputChange} placeholder="What do you think it is?"></textarea>
