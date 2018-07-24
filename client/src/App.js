@@ -153,6 +153,7 @@ class App extends Component {
 
                 {this.state.isHidden === false && <Card
                   pictureId={this.state.card._id}
+                  pictureUserId={this.state.card.user}
                   description={this.state.card.description}
                   image={this.state.card.url}
                   comments={this.state.card.comments}
