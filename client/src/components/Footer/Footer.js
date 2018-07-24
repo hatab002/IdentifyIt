@@ -5,7 +5,7 @@ const Footer = props => (
     <div>
         <footer className="footer">
             <div className="bottom">
-                W.I.T.T
+                IdentifyIt!
             </div>
         </footer>
     </div>

@@ -18,8 +18,6 @@ class Carousel extends React.Component {
         } else {
             return[start, start + 1, start + 2].map(idx => arr[idx % arr.length])
         }
-        // return [start, start + 1, start + 2]
-        // .map(idx => arr[idx % arr.length])
     }
     render() {
       const props = this.props

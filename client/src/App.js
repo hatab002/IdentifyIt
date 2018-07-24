@@ -6,14 +6,6 @@ import Card from './components/Card';
 import Carousel from './components/Carousel';
 import Footer from './components/Footer';
 import Alert from './components/Alert';
-
-
-//passport
-// import { GoogleLogin } from 'react-google-login';
-// import config from './config.json';
-// import "../src/utils/token.utils";
-
-
 import API from './utils/API';
 import socketIOClient from "socket.io-client";
 
@@ -35,30 +27,20 @@ class App extends Component {
     this.setState({
       isHidden: false
     })
-    console.log("hello")
   }
 
   componentDidMount() {
     API.getPictures()
       .then(res => {
-        console.log(res.data);
         this.setState({ witts: res.data, card: res.data[0] ? res.data[0] : this.state.card })
       })
       .catch(err => console.log(err));
   }
 
   updateCard = (i) => {
-    console.log("old card vv")
-    console.log(this.state.card)
     const newCard = this.state.witts.find(witt => witt._id === i)
     const clonedNewCard = { ...newCard }
-
-    console.log("new CARD below ------")
-    console.log(clonedNewCard)
-
     this.setState({ card: clonedNewCard })
-
-
   }
 
   myThings = () => {
@@ -115,7 +97,6 @@ class App extends Component {
               alertBoldText: message,
               alertOtherText: this.state.user
             })
-            // alert(message + this.state.user)
           });
         } else {  // if user doesn't exist in our DB, alert them to create account
           this.setState({
@@ -190,53 +171,6 @@ class App extends Component {
       </div>
     );
   }
-
-  //Passport
-
-  //   constructor() {
-  //     super();
-  //     this.state = { isAuthenticated: false, user: null, token: ''};
-  // }
-
-  // logout = () => {
-  //     this.setState({isAuthenticated: false, token: '', user: null})
-  // };
-
-  // onFailure = (error) => {
-  //     alert(error);
-  // };
-
-
-
-  // render() {
-  //   let content = !!this.state.isAuthenticated ?
-  //           (
-  //               <div>
-  //                   <p>Authenticated</p>
-  //                   <div>
-  //                       {this.state.user.email}
-  //                   </div>
-  //                   <div>
-  //                       <button onClick={this.logout} className="button">
-  //                           Log out
-  //                       </button>
-  //                   </div>
-  //               </div>
-  //           ) :
-  //           (
-  //               <div>
-
-
-  //               </div>
-  //           );
-
-  //       return (
-  //           <div className="App">
-  //               {content}
-  //           </div>
-  //       );
-  //   }
-
 }
 
 
