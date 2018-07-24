@@ -12,12 +12,13 @@ const Card = props => {
                 <div className="col-md-12" id="card">
                     <div className="row">
                         <div className="col-md-5">
-                            <img id="selected-image" src={props.image} alt={props.description}/>
+                            <img id="selected-image" src={props.image} alt={props.description} />
                         </div>
                         <Comments 
                         comments={props.comments}
                         pictureId={props.pictureId}
-                        userId={props.userId}/>
+                        userId={props.userId}
+                        updateAlert={props.updateAlert}/>
                     </div>
                 </div>
             </div>
