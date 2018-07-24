@@ -11,8 +11,15 @@ class Carousel extends React.Component {
         start: 0
     }
     shutter = (arr, start) => {
-        return [start, start + 1, start + 2]
-        .map(idx => arr[idx % arr.length])
+        if (arr.length === 1){
+            return [start].map(idx => arr[idx % arr.length])
+        } else if(arr.length === 2){
+            return [start, start + 1].map(idx => arr[idx % arr.length])
+        } else {
+            return[start, start + 1, start + 2].map(idx => arr[idx % arr.length])
+        }
+        // return [start, start + 1, start + 2]
+        // .map(idx => arr[idx % arr.length])
     }
     render() {
       const props = this.props
