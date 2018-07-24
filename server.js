@@ -48,7 +48,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/witt"); 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/witt";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 
  
