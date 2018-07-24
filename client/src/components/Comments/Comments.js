@@ -103,7 +103,6 @@ class Comments extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
              <p className="username">{comment.user.username}</p>
-             <p className="username">{comment.user._id}</p>
             <p className="comment-text">{comment.text}</p>
             </span>
               <span className="badge badge-primary badge-pill" key={comment._id}>
