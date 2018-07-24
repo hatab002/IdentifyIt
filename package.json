@@ -2,7 +2,7 @@
   "name": "project3",
   "version": "1.0.0",
   "main": "server.js",
-  "proxy": "http://localhost:3001/",
+  "proxy": "https://identify-it.herokuapp.com/",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
