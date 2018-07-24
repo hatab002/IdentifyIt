@@ -5,11 +5,29 @@ class Carousel extends React.Component {
     componentDidMount() {
         this.interval = setInterval(() => {
             this.setState({start: this.state.start + 1})
-        }, 7000)
+        }, 1000000)
     }
     state = {
         start: 0
     }
+
+    // shift = direction => e => {
+    //     if (direction === 'left') {
+
+    //     }
+    // }
+
+    nextSlide = () => {
+        this.setState({start: this.state.start +1})
+    }
+
+    prevSlide = () => {
+        
+        if (this.state.start >= 1) {
+        this.setState({start: this.state.start -1})
+        }
+    }
+
     shutter = (arr, start) => {
         if (arr.length === 1){
             return [start].map(idx => arr[idx % arr.length])
@@ -40,11 +58,11 @@ class Carousel extends React.Component {
             </div>
         </div>
 
-        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a className="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev" onClick={this.prevSlide}>
             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
             <span className="sr-only">Previous</span>
         </a>
-        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a className="carousel-control-next" href="#imageCarousel" role="button" data-slide="next" onClick={this.nextSlide}>
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="sr-only">Next</span>
         </a>
