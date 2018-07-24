@@ -91,10 +91,12 @@ class Comments extends Component {
              <p className="username">{comment.user.username}</p>
             <p className="comment-text">{comment.text}</p>
             </span>
-              <span className="badge badge-primary badge-pill" key={comment._id}>              
+              <span className="badge badge-primary badge-pill" key={comment._id}>
+              <i class="far fa-check-circle"></i>              
               <i id="arrow-up" className="fas fa-arrow-alt-circle-up" onClick={() => this.upvoteComment(comment._id, comment.upvoteCount)}/>
               <i id="arrow-down" className="fas fa-arrow-alt-circle-down" onClick={() => this.downvoteComment(comment._id, comment.upvoteCount)} />
               {comment.upvoteCount}
+              <i class="fas fa-trash-alt"></i>
               </span>
             </li>
           ))}
