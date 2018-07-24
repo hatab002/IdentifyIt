@@ -37,6 +37,27 @@ class Comments extends Component {
     }
   }
 
+  deleteComment = (commentId) => {
+    API.deleteComment(commentId)
+      .then(res => this.setState({comments: this.state.comments.filter(comment => comment._id != commentId)}));
+  }
+
+  markSolved = (commentId) => {
+    API.updateComment(commentId, {isCorrect: true})
+      .then(res => {
+        API.updatePicture(res.data.picture, {isSolved: true})
+          .then(picRes => {
+            if (picRes.status === 200) {
+              this.setState({comments: this.state.comments.map(comment => {
+                if (comment._id === commentId) {
+                  comment.isSolved = true;
+                }
+              })})
+            }
+          });
+      });
+  }
+
   upvoteComment = (commentId, newUpvoteCount) => {
     
      API.updateComment(commentId, {
@@ -68,7 +89,7 @@ class Comments extends Component {
   }
 
   render() {
-    console.log(this.state.comments)
+
     return (
 
       <div className="col-md-7" id="comments-container">
@@ -83,14 +104,15 @@ class Comments extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
              <p className="username">{comment.user.username}</p>
+             <p className="username">{comment.user._id}</p>
             <p className="comment-text">{comment.text}</p>
             </span>
               <span className="badge badge-primary badge-pill" key={comment._id}>
-              <i class="far fa-check-circle"></i>              
+              {this.props.pictureUserId === this.props.userId && <i className="far fa-check-circle" onClick={() => this.markSolved(comment._id)}></i>}              
               <i id="arrow-up" className="fas fa-arrow-alt-circle-up" onClick={() => this.upvoteComment(comment._id, comment.upvoteCount)}/>
               <i id="arrow-down" className="fas fa-arrow-alt-circle-down" onClick={() => this.downvoteComment(comment._id, comment.upvoteCount)} />
               {comment.upvoteCount}
-              <i class="fas fa-trash-alt"></i>
+              {this.props.userId === comment.user._id && <i className="fas fa-trash-alt" onClick={() => this.deleteComment(comment._id)}></i>}
               </span>
             </li>
           ))}

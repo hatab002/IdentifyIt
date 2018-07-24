@@ -17,6 +17,7 @@ const Card = props => {
                         <Comments 
                         comments={props.comments}
                         pictureId={props.pictureId}
+                        pictureUserId={props.pictureUserId}
                         userId={props.userId}
                         updateAlert={props.updateAlert}/>
                     </div>
