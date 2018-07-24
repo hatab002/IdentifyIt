@@ -10,10 +10,6 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 
-// const authRoutes = require('./routes/passport/auth-routes');
-// const passportSetup = require('./routes/passport/passport-setup')
-
-
 const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,18 +19,8 @@ app.use(index);
 
 
 io.on("connection", (socket) => {
-  console.log("A user connected");
   socket.emit("message", `Welcome to IdentifyIt `)
   socket.broadcast.emit("new_comment", `New Comment: `)
-  // socket.on("new_comment",(comment) =>{
-  // })
-  // socket.on('new_notification', function (data) {
-  //   io.sockets.emit('notification', {
-  //     title: title.data,
-  //     message: message.data
-  //   });
-  // }); 
-  
   socket.on("disconnect", () => console.log("User disconnected"));
   
 }); 
@@ -43,9 +29,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 } 
 app.use(routes);
-
-// Passport route
-// app.use('/auth', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,17 +46,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  // if (err) {
-  //   res.json({
-  //     message: err.message,
-  //     error: err});
-  //           }
 });
-
-// mongoose.Promise = global.Promise
-// let MONGO_URL
-// 	mongoose.connect("mongodb://heroku_362284tg:vtakfrfl8o5qng8j4js1pgbu7e@ds141661.mlab.com:41661/heroku_362284tg"); // local mongo url
-// 	var dbConnection = mongoose.connection
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/witt"); 
 
