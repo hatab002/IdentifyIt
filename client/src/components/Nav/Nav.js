@@ -41,7 +41,16 @@ class Nav extends Component {
               buttonText="Logout"
               onLogoutSuccess={this.props.logoutUser}
               className="col-md-1 "
-              style={{fontFamily:"Roboto"}}
+              style={{fontFamily:"Gaegu", cursor: "pointer",
+              color: "#81ea8b",
+              textShadow:
+              ["-.5px -.5px 0 black",
+              ".5px -.5px 0 black",
+              "-.5px .5px 0 black",
+              ".5px .5px 0 black"],
+              background:  "#FFFD57",
+              border: "0px"
+            }}
             />
           </div>
         </nav>
