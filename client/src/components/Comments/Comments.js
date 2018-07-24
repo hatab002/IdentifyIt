@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Comments.css";
 import API from "../../utils/API";
 import socketIOClient from "socket.io-client";
-import Alert from '../Alert';
 
 
 class Comments extends Component {
@@ -68,7 +67,6 @@ class Comments extends Component {
   }
 
   render() {
-    console.log(this.state.comments)
     return (
 
       <div className="col-md-7" id="comments-container">

@@ -11,24 +11,6 @@ class Login extends Component {
   }
 
   googleResponse = (response) => {
-    // const tokenBlob = new Blob([JSON.stringify({email:response.w3.U3, username:response.w3.ig}, null, 2)], {type : 'application/json'});
-    // const options = {
-    //     method: 'POST',
-    //     body: tokenBlob,
-    //     mode: 'cors',
-    //     cache: 'default'
-    // };
-    // fetch('/api/users', options).then(r => {
-    //     const token = r.headers.get('x-auth-token');
-    //     r.json().then(user => {
-    //         // console.log('promise')
-    //         // if (token) {                
-    //         //     console.log('state init')
-    //             this.setState({isAuthenticated: true, userId: user._id, user, token})
-    //         // }
-    //         // console.log(user)
-    //     });
-    // })
 
     this.setState({
       email: response.w3.U3,

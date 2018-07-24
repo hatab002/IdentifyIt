@@ -13,11 +13,6 @@ class Nav extends Component {
     this.props.loginUser(response.w3.U3);
   };
 
-  googleLogout = (response) => {
-    console.log("logout init")
-    // this.props.logoutUser()
-  }
-
   render() {
 
     return (
@@ -34,9 +29,6 @@ class Nav extends Component {
               <p id="my-things" className="navbar-brand" onClick={() => this.props.myThings()}>My Things</p>
             </div>
             <Submit userId={this.props.userId} />
-            {/* <div className="col-md-2">
-              <p id="sign-out" className="navbar-brand" data-toggle="modal" data-target="#userLogin">Sign Out</p>
-            </div>             */}
             <GoogleLogout
               buttonText="Logout"
               onLogoutSuccess={this.props.logoutUser}
