@@ -20,7 +20,7 @@ class App extends Component {
     user: "",
     alertShow: false,
     alertBoldText: "",
-    alertOtherText: ""
+    alertOtherText: "",
   };
 
   toggleCard = () => {
@@ -35,6 +35,19 @@ class App extends Component {
         this.setState({ witts: res.data, card: res.data[0] ? res.data[0] : this.state.card })
       })
       .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    if 
+      // (sessionStorage.getItem('userLoggedIn' !== null) ){
+        (sessionStorage.length !== 0 ){
+
+
+        this.setState({
+          isAuthenticated: true
+        })
+      }
+  
   }
 
   updateCard = (i) => {
@@ -85,10 +98,11 @@ class App extends Component {
     API.getUserByEmail(email)
       .then(existingUser => {
         if (existingUser.data) {  // make sure user exists in our database
+          sessionStorage.setItem('userLoggedIn', "loggedIn")
           this.setState({
             isAuthenticated: existingUser.status = 200 ? true : false,
             userId: existingUser.data._id,
-            user: existingUser.data.username
+            user: existingUser.data.username,
           });
           const socket = socketIOClient('http://localhost:3001')
           socket.on("message", (message) => {
