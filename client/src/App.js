@@ -139,6 +139,10 @@ class App extends Component {
     this.setState({ alertShow: false });
   }
 
+  updateAlert = (show, boldText, otherText) => {
+    this.setState({ alertShow: show, alertBoldText: boldText, alertOtherText: otherText });
+  }
+
   render() {
     return (
       <div className="App">
@@ -172,6 +176,7 @@ class App extends Component {
                   image={this.state.card.url}
                   comments={this.state.card.comments}
                   userId={this.state.userId}
+                  updateAlert={this.updateAlert}
                 />}
 
               </div>
