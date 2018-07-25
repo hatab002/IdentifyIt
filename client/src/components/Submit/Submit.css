@@ -1,0 +1,12 @@
+.uploadcare--widget__button_type_open {
+    background-color: #81ea8b !important;
+    border-color: #81ea8b !important;
+    background-color: #81ea8b !important;
+    color: white;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
+    border-radius: .25rem;
+}

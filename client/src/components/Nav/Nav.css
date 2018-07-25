@@ -1,15 +1,22 @@
 .navbar-brand {
     font-size: 20px;
+    font-weight: bold;
+    color: #FFFD57 !important;
+    text-shadow:
+    -.5px -.5px 0 black,
+    .5px -.5px 0 black,
+    -.5px .5px 0 black,
+    .5px .5px 0 black;
 }
 
 .navbar {
-    background: linear-gradient(to right, #FFFD57)
-    
+    background-color: #81ea8b !important;
 }
 
-#submit-picture {
+.nav-link,
+.google-button {
     cursor: pointer;
-    color: #81ea8b;
+    color: white !important;
     text-shadow:
     -.5px -.5px 0 black,
     .5px -.5px 0 black,
@@ -17,12 +24,12 @@
     .5px .5px 0 black;
 }
 
-#login, #sign-out, #create-account, #my-things {
-    cursor: pointer;
-    color: #81ea8b;
-    text-shadow:
-    -.5px -.5px 0 black,
-    .5px -.5px 0 black,
-    -.5px .5px 0 black,
-    .5px .5px 0 black;
+.google-button {
+    background: none;
+    border: none;
+    margin-top: -1px;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
 }
