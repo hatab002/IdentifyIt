@@ -11,7 +11,6 @@ class Login extends Component {
   }
 
   googleResponse = (response) => {
-
     this.setState({
       email: response.w3.U3,
       username: response.w3.ig,
@@ -27,6 +26,10 @@ class Login extends Component {
     });
   };
 
+  resetModal = () => {
+    this.setState({ email: "", username: "", showForm: false })
+  }
+
   render() {
     return (
       <div>
@@ -35,31 +38,30 @@ class Login extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="loginTitle">Create account</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.resetModal}>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
                 <form>
-                  <div className="fa fa-google-plus">
-                    <GoogleLogin
-                      clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
-                      buttonText="Sign Up with Google"
-                      onSuccess={this.googleResponse}
-                      onFailure={this.googleResponse}
-                    />
-                  </div>
-                  {this.state.showForm === true && 
-                  <div className="form-group">
-                    <label htmlFor="username">Customize Your Username</label>
-                    <input className="form-control" id="username" name="username" value={this.state.username} onChange={this.handleInputChange} />
-                    <small id="emailHelp" className="form-text text-muted">Your username will appear publicly next to pictures and comments.</small>
-                  </div>
+                  <GoogleLogin
+                    className="btn google-signup"
+                    clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
+                    buttonText="Sign Up with Google"
+                    onSuccess={this.googleResponse}
+                    onFailure={this.googleResponse}
+                  />
+                  {this.state.showForm === true &&
+                    <div className="form-group mt-4">
+                      <label htmlFor="username">Customize Your Username</label>
+                      <input className="form-control" id="username" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                      <small id="emailHelp" className="form-text text-muted">Your username will appear publicly next to pictures and comments.</small>
+                    </div>
                   }
                 </form>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.resetModal}>Close</button>
                 <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => this.props.createUser(this.state.email, this.state.username)}>Submit</button>
               </div>
             </div>

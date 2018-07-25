@@ -92,7 +92,7 @@ class Comments extends Component {
     return (
 
       <div className="col-md-7" id="comments-container">
-        <form>
+        <form className="comments-form">
           <div className="form-group">
             <textarea className="form-control" id="comment" rows="3" name="newComment" value={this.state.newComment} onChange={this.handleInputChange} placeholder="What do you think it is?"></textarea>
           </div>
