@@ -30,6 +30,10 @@ class Submit extends Component {
     });
   };
 
+  resetModal = () => {
+    this.setState({ description: "" });
+  }
+
   render() {
     return (
       <div className="modal fade" id="submitPhoto" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -43,15 +47,17 @@ class Submit extends Component {
             </div>
             <div className="modal-body">
               <form>
-                <div className="form-group">
-                  <label htmlFor="pictureDescription">Description</label>
-                  <textarea className="form-control" id="pictureDescription" rows="3" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder="Please include any additional information you can provide to help users identify it"></textarea>
-                </div>
+                <Uploader id="picture" name="file" data-images-only data-clearable onChange={value => this.saveUrl(value)} />
+                {this.state.url &&
+                  <div className="form-group mt-4">
+                    <label htmlFor="pictureDescription">Add a Description</label>
+                    <textarea className="form-control" id="pictureDescription" rows="3" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder="Please include any additional information you can provide to help users IdentifyIt!"></textarea>
+                  </div>
+                }
               </form>
-              <Uploader id="picture" name="file" data-images-only data-clearable onChange={value => this.saveUrl(value)} />
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.resetModal}>Close</button>
               <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.submitPicture}>Submit</button>
             </div>
           </div>

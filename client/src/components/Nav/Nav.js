@@ -16,72 +16,71 @@ class Nav extends Component {
   render() {
 
     return (
-      
+
       this.props.isLoggedIn ?
-      
-      (<div>
-        <nav className="navbar navbar-expand-lg">
-          <div className="container">
-            <div className="col-md-1">
-              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</p>
+
+        (<div>
+          <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <div className="container">
+              <a href="/" className="navbar-brand">IdentifyIt!</a>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#submitPhoto" data-toggle="modal" data-target="#submitPhoto">Submit a Photo</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#myPhotos" onClick={() => this.props.myThings()}>My Photos</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#logout">
+                      <GoogleLogout
+                        className="google-button"
+                        buttonText="Logout"
+                        onLogoutSuccess={this.props.logoutUser}
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="col-md-1">
-              <p id="my-things" className="navbar-brand" onClick={() => this.props.myThings()}>My Things</p>
+          </nav>
+          <Submit userId={this.props.userId} />
+        </div>
+        ) :
+
+        (<div>
+          <nav className="navbar navbar-expand-sm navbar-light bg-light">
+            <div className="container">
+              <a href="/" className="navbar-brand">IdentifyIt!</a>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav">
+                  <li className="nav-item">
+                    <a className="nav-link" href="#createAccount" data-toggle="modal" data-target="#createAccount">Create Account</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="#login">
+                      <GoogleLogin
+                        className="google-button"
+                        clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
+                        buttonText="Login"
+                        onSuccess={this.googleResponse}
+                        onFailure={this.googleResponse}
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <Submit userId={this.props.userId} />
-            <GoogleLogout
-              buttonText="Logout"
-              onLogoutSuccess={this.props.logoutUser}
-              className="col-md-1 "
-              style={{fontFamily:"Gaegu", cursor: "pointer",
-              color: "#81ea8b",
-              textShadow:
-              ["-.5px -.5px 0 black",
-              ".5px -.5px 0 black",
-              "-.5px .5px 0 black",
-              ".5px .5px 0 black"],
-              background:  "#FFFD57",
-              border: "0px"
-            }}
-            />
-          </div>
-        </nav>
-      </div>
-      ) :
-      
-      (<div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container">
-            <div className="col-md-2">
-              <p id="submit-picture" className="navbar-brand" data-toggle="modal" data-target={this.props.isLoggedIn ? "#submitPhoto" : "#createAccount"}>Submit a Photo</p>
-            </div>
-            <Submit />
-            <div className="col-md-6"></div>
-            <div className="col-md-1">
-              <p id="login" className="navbar-brand" data-toggle="modal" data-target="#createAccount">Create Account</p>
-            </div>
-            <GoogleLogin              
-              className="col-md-1"
-              clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
-              buttonText="Login with Google"
-              onSuccess={this.googleResponse}
-              onFailure={this.googleResponse}
-              style={{fontFamily:"Gaegu", cursor: "pointer",
-              color: "#81ea8b",
-              textShadow:
-              ["-.5px -.5px 0 black",
-              ".5px -.5px 0 black",
-              "-.5px .5px 0 black",
-              ".5px .5px 0 black"],
-              background:  "#FFFD57",
-              border: "0px"
-            }}
-            />
-          </div>
-        </nav>
-        <Login createUser={this.props.createUser} />
-      </div>
-      )
+          </nav>
+          <Login createUser={this.props.createUser} />
+        </div>
+        )
     )
   }
 }
