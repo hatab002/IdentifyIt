@@ -34,3 +34,18 @@
 #carouselExampleControls {
     align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+    #imageCarousel {   
+        padding-bottom: 5%;
+    }
+    .image-responsive {
+        width: 225px;
+        height: 175px;
+        padding: 5px;
+        border-style: solid;
+        border-color: black;
+        border-width: .25px;
+    }
+
+}
