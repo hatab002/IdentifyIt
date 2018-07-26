@@ -12,8 +12,16 @@ module.exports = {
     findById: (req, res) => {
         db.User
         .findById(req.params.id)
-        .populate("pictures")
-        .populate("comments")
+        .populate({
+            path: "pictures",
+            populate: { 
+                path: "comments",
+                populate: {
+                    path: "user",
+                    select: "username"
+                }
+            }
+        })
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
@@ -27,7 +35,6 @@ module.exports = {
     },
 
     create: (req, res) => {
-        console.log('created user', req.body)
         db.User
         .create(req.body)
         .then(dBModel => res.json(dBModel))
