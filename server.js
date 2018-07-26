@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(index); 
+
 
 
 io.on("connection", (socket) => {
