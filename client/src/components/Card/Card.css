@@ -1,13 +1,14 @@
 #card {
     height: 450px;
     margin-top: 5%;
+    margin-bottom: 5%;
     background-color: white;
     border-style: groove;
     border-color: black;
     border-width: .5px;
 }
 
-#selected-image{
+#selected-image {
     width: 350px;
     height: 300px;
     margin-top: 6%;
@@ -16,4 +17,11 @@
     border-width: .5px;
     padding: 1%;
 
+}
+
+@media screen and (max-width: 768px) {
+    #selected-image {
+        width: 225px;
+        height: 200px;
+    }
 }
