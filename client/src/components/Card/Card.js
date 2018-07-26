@@ -19,6 +19,7 @@ const Card = props => {
                         pictureId={props.pictureId}
                         pictureUserId={props.pictureUserId}
                         userId={props.userId}
+                        user={props.user}
                         updateAlert={props.updateAlert}/>
                     </div>
                 </div>

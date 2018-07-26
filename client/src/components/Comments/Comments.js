@@ -19,6 +19,7 @@ class Comments extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props.comments);
     this.setState({ comments: this.props.comments });
   }
 
@@ -33,7 +34,13 @@ class Comments extends Component {
         text: this.state.newComment,
         picture: this.props.pictureId,
         user: this.props.userId
-      }).then(res => this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) }));
+      }).then(res => {
+        res.data.user = {
+          _id: res.data.user,
+          username: this.props.user
+        }
+        this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) })
+      });
       const socket = socketIOClient('http://localhost:3001')
         socket.on("new_comment", (new_comment) =>{
           this.props.updateAlert(true, new_comment, this.state.newComment);

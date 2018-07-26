@@ -46,9 +46,11 @@ class App extends Component {
   }
 
   updateCard = (i) => {
-    const newCard = this.state.witts.find(witt => witt._id === i)
-    const clonedNewCard = { ...newCard }
-    this.setState({ card: clonedNewCard })
+    API.getPicture(i)
+      .then(res => {
+        this.setState({ card: res.data })
+      })
+      .catch(err => console.log(err));
   }
 
   myThings = () => {
@@ -175,6 +177,7 @@ class App extends Component {
                     image={this.state.card.url}
                     comments={this.state.card.comments}
                     userId={this.state.userId}
+                    user={this.state.user}
                     updateAlert={this.updateAlert}
                   />}
 
