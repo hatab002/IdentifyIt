@@ -19,18 +19,52 @@
 }
 
 .carousel-control-prev-icon {
-    margin-right: 90%;
     height: 100%;
-    background-color: #81ea8b;
+    background-color: #E8EAE1;
+    width: 90%;
+}
+
+.carousel-control-prev {
+    left: 0;
+    width: 2%;
+}
+
+.carousel-control-next {
+    right: 0;
+    width: 2%;
 }
 
 .carousel-control-next-icon {
-    margin-left: 90%;
     height: 100%;
-    background-color:#81ea8b;
+    background-color:#E8EAE1;
+    width: 90%;
 
 }
 
 #carouselExampleControls {
     align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    #imageCarousel {   
+        padding-bottom: 5%;
+    }
+    .image-responsive {
+        width: 225px;
+        height: 175px;
+        padding: 5px;
+        border-style: solid;
+        border-color: black;
+        border-width: .25px;
+    }
+
+    .carousel-control-prev {
+        left: 0;
+        width: 15%;
+    }
+    
+    .carousel-control-next {
+        right: 0;
+        width: 15%;
+    }
 }
