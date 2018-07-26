@@ -21,7 +21,13 @@ module.exports = {
     findById: (req, res) => {
         db.Picture
         .findById(req.params.id)
-        .populate("comments")
+        .populate({
+            path: "comments",
+            populate: { 
+                path: "user",
+                select: "username"
+            }
+        })
         .then(dBModel => res.json(dBModel))
         .catch(err => res.status(422).json(err));
     },
