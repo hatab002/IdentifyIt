@@ -36,8 +36,12 @@ class App extends Component {
       })
       .catch(err => console.log(err));
     
-    if (sessionStorage.getItem("identifyItLoggedIn")) {
-      this.setState({ isAuthenticated: true });
+    if (sessionStorage.getItem("identifyItUserId")) {
+      this.setState({
+        isAuthenticated: true,
+        userId: sessionStorage.getItem("identifyItUserId"),
+        user: sessionStorage.getItem("identifyItUser")
+      });
     }
   }
 
@@ -77,7 +81,8 @@ class App extends Component {
             email,
             username
           }).then(newUser => {
-            sessionStorage.setItem("identifyItLoggedIn", true);
+            sessionStorage.setItem("identifyItUserId", newUser.data._id);
+            sessionStorage.setItem("identifyItUser", newUser.data.username);
             this.setState({
               isAuthenticated: newUser.status = 200 ? true : false,
               userId: newUser.data._id,
@@ -92,7 +97,8 @@ class App extends Component {
     API.getUserByEmail(email)
       .then(existingUser => {
         if (existingUser.data) {  // make sure user exists in our database
-          sessionStorage.setItem("identifyItLoggedIn", true);
+          sessionStorage.setItem("identifyItUserId", existingUser.data._id);
+          sessionStorage.setItem("identifyItUser", existingUser.data.username);
           this.setState({
             isAuthenticated: existingUser.status = 200 ? true : false,
             userId: existingUser.data._id,
@@ -117,7 +123,8 @@ class App extends Component {
   }
 
   logoutUser = () => {
-    sessionStorage.removeItem("identifyItLoggedIn");
+    sessionStorage.removeItem("identifyItUserId");
+    sessionStorage.removeItem("identifyItUser");
     this.setState({
       isAuthenticated: false,
       alertShow: true,
