@@ -35,19 +35,10 @@ class App extends Component {
         this.setState({ witts: res.data, card: res.data[0] ? res.data[0] : this.state.card })
       })
       .catch(err => console.log(err));
-  }
-
-  componentDidMount() {
-    if 
-      // (sessionStorage.getItem('userLoggedIn' !== null) ){
-        (sessionStorage.length !== 0 ){
-
-
-        this.setState({
-          isAuthenticated: true
-        })
-      }
-  
+    
+    if (sessionStorage.getItem("identifyItLoggedIn")) {
+      this.setState({ isAuthenticated: true });
+    }
   }
 
   updateCard = (i) => {
@@ -85,11 +76,14 @@ class App extends Component {
           API.saveUser({
             email,
             username
-          }).then(newUser => this.setState({
-            isAuthenticated: newUser.status = 200 ? true : false,
-            userId: newUser.data._id,
-            user: newUser.data.username
-          }));
+          }).then(newUser => {
+            sessionStorage.setItem("identifyItLoggedIn", true);
+            this.setState({
+              isAuthenticated: newUser.status = 200 ? true : false,
+              userId: newUser.data._id,
+              user: newUser.data.username
+            });
+          });
         }
       });
   }
@@ -98,7 +92,7 @@ class App extends Component {
     API.getUserByEmail(email)
       .then(existingUser => {
         if (existingUser.data) {  // make sure user exists in our database
-          sessionStorage.setItem('userLoggedIn', "loggedIn")
+          sessionStorage.setItem("identifyItLoggedIn", true);
           this.setState({
             isAuthenticated: existingUser.status = 200 ? true : false,
             userId: existingUser.data._id,
@@ -123,11 +117,12 @@ class App extends Component {
   }
 
   logoutUser = () => {
-        this.setState({
-          isAuthenticated: false,
-          alertShow: true,
-          alertBoldText: "You are logged out."
-        })
+    sessionStorage.removeItem("identifyItLoggedIn");
+    this.setState({
+      isAuthenticated: false,
+      alertShow: true,
+      alertBoldText: "You are logged out."
+    });
   }
     
   hideAlert = () => {
@@ -153,32 +148,34 @@ class App extends Component {
           alertShow={this.state.alertShow} alertBoldText={this.state.alertBoldText} alertOtherText={this.state.alertOtherText} hideAlert={this.hideAlert}/>
           <Header />
         </header>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard} />
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="card-container">
-
-                {this.state.isHidden === false && <Card
-                  pictureId={this.state.card._id}
-                  pictureUserId={this.state.card.user}
-                  description={this.state.card.description}
-                  image={this.state.card.url}
-                  comments={this.state.card.comments}
-                  userId={this.state.userId}
-                  updateAlert={this.updateAlert}
-                />}
-
+        <main className="app-content">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <Carousel toggleCard={this.toggleCard} witts={this.state.witts} updateCard={this.updateCard} />
               </div>
             </div>
           </div>
-        </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card-container">
+
+                  {this.state.isHidden === false && <Card
+                    pictureId={this.state.card._id}
+                    pictureUserId={this.state.card.user}
+                    description={this.state.card.description}
+                    image={this.state.card.url}
+                    comments={this.state.card.comments}
+                    userId={this.state.userId}
+                    updateAlert={this.updateAlert}
+                  />}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
         <footer className="App-footer">
           <Footer />
         </footer>
