@@ -93,5 +93,6 @@
     font-size: 15px;
 }
 .comment-date {
-
+  margin-left: 20%;
+  color: gray !important;
 }

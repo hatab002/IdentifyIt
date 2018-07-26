@@ -3,6 +3,10 @@ import "./Comments.css";
 import API from "../../utils/API";
 import socketIOClient from "socket.io-client";
 import Moment from 'react-moment';
+const momentStyle= {
+  margin:"7%",
+  color: "grey"
+}
 
 
 class Comments extends Component {
@@ -104,9 +108,9 @@ class Comments extends Component {
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
              <p className="username">{comment.user.username}</p>
-             <Moment id="comment-date" format="MM/DD/YYYY">
+             {/* <Moment id="comment-date" format="YYYY-MM-DDTHH:mm:ss.SSS" style={momentStyle}>
               <p className="created-date"> {comment.createdAt}</p>
-             </Moment>
+             </Moment></p> */}
             <p className="comment-text">{comment.text}</p>
             </span>
               <span className="badge badge-primary badge-pill" key={comment._id}>
