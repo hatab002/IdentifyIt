@@ -101,21 +101,25 @@
     }
 
     #comment-submit {
+        position: relative;
+        padding-top: 1px;
+        bottom: 6px;
         width: 50px;
-        height: 25px;
+        height: 17px;
         margin-left: 75%;
         margin-top: -8.5%;
         font-size: 10px;
     }
 
     .comments-form {
-        height: 130px;
+        height: 70px;
+        padding-bottom: 75px;
         
     }
 
     .comment-list {
         overflow: scroll;
-        max-height: 50px;
+        max-height: 100px;
     }
 
     .username {
@@ -146,5 +150,9 @@
     .badge {
         width: 75px;
         font-size: 10px;
+    }
+
+    .form-control {
+        height: 50px;
     }
 }
