@@ -48,9 +48,6 @@ module.exports = {
         db.Picture
         .findByIdAndRemove(req.params.id)
         .then(dBModel => {
-            fs.unlink(path.join("./uploads", dBModel.filename), (err) => {
-                if (err) throw err;
-            });
             db.User.findByIdAndUpdate( // remove from user's list of pictures
                 dBModel.user,
                 { $pull: { pictures: dBModel._id } }
