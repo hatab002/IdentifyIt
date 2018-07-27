@@ -106,14 +106,14 @@ class Home extends Component {
             userId: existingUser.data._id,
             user: existingUser.data.username,
           });
-          // const socket = socketIOClient('http://localhost:3001')
-          // socket.on("message", (message) => {
-          //   this.setState({
-          //     alertShow: true,
-          //     alertBoldText: message,
-          //     alertOtherText: this.state.user
-          //   })
-          // });
+          const socket = socketIOClient(process.env.REACT_APP_SOCKET_CLIENT)
+          socket.on("message", (message) => {
+            this.setState({
+              alertShow: true,
+              alertBoldText: message,
+              alertOtherText: this.state.user
+            })
+          });
         } else {  // if user doesn't exist in our DB, alert them to create account
           this.setState({
             alertShow: true,

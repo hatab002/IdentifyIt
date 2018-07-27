@@ -40,10 +40,10 @@ class Comments extends Component {
         }
         this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) })
       });
-      // const socket = socketIOClient('http://localhost:3001')
-      //   socket.on("new_comment", (new_comment) =>{
-      //     this.props.updateAlert(true, new_comment, this.state.newComment);
-      //   });
+      const socket = socketIOClient(process.env.REACT_APP_SOCKET_CLIENT)
+        socket.on("new_comment", (new_comment) =>{
+          this.props.updateAlert(true, new_comment, this.state.newComment);
+        });
     }
   }
 
