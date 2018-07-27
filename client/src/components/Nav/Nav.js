@@ -10,6 +10,7 @@ import "./Nav.css";
 class Nav extends Component {
 
   googleResponse = (response) => {
+    console.log(response)
     this.props.loginUser(response.w3.U3);
   };
 
