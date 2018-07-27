@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Comments.css";
 import API from "../../utils/API";
 import socketIOClient from "socket.io-client";
-import Moment from 'react-moment';
+import moment from 'moment';
 const momentStyle= {
   margin:"7%",
   color: "grey"
@@ -114,7 +114,8 @@ class Comments extends Component {
           {this.state.comments.map(comment => (
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
-             <p className="username">{comment.user.username}</p>
+             <p className="username">{comment.user.username}
+             <span id="timeAgo" style={momentStyle}>{moment(comment.createdAt).fromNow()}</span></p>
              {/* <Moment id="comment-date" format="YYYY-MM-DDTHH:mm:ss.SSS" style={momentStyle}>
               <p className="created-date"> {comment.createdAt}</p>
              </Moment></p> */}
