@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const http = require("http");
+const socketIo = require("socket.io");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -17,6 +19,15 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-app.listen(PORT, function() {
+const server = http.createServer(app);
+const io = socketIo(server);
+
+io.on("connection", (socket) => {
+  socket.emit("message", `Welcome to IdentifyIt `)
+  socket.broadcast.emit("new_comment", `New Comment: `)
+  socket.on("disconnect", () => console.log("User disconnected"));
+});
+
+server.listen(PORT, function() {
   console.log(`API server listening on PORT ${PORT}!`);
 });
