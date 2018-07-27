@@ -8,6 +8,7 @@
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
     "express": "^4.16.3",
+    "moment": "^2.22.2",
     "mongoose": "^5.2.1",
     "passport": "^0.4.0",
     "path": "^0.12.7",
@@ -16,8 +17,8 @@
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "uploadcare-widget": "^3.5.1",
-    "socket.io-client": "^2.1.1"
+    "socket.io-client": "^2.1.1",
+    "uploadcare-widget": "^3.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
