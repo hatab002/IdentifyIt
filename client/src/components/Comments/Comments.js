@@ -19,7 +19,6 @@ class Comments extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.comments);
     this.setState({ comments: this.props.comments });
   }
 
@@ -41,10 +40,10 @@ class Comments extends Component {
         }
         this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) })
       });
-      const socket = socketIOClient('http://localhost:3001')
-        socket.on("new_comment", (new_comment) =>{
-          this.props.updateAlert(true, new_comment, this.state.newComment);
-        });
+      // const socket = socketIOClient('http://localhost:3001')
+      //   socket.on("new_comment", (new_comment) =>{
+      //     this.props.updateAlert(true, new_comment, this.state.newComment);
+      //   });
     }
   }
 
@@ -114,7 +113,8 @@ class Comments extends Component {
           {this.state.comments.map(comment => (
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
-             <p className="username">{comment.user.username} <span id="timeAgo" style={momentStyle}>{moment(comment.createdAt).fromNow()}</span></p>
+             <p className="username">{comment.user.username}
+             <span id="timeAgo" style={momentStyle}>{moment(comment.createdAt).fromNow()}</span></p>
              {/* <Moment id="comment-date" format="YYYY-MM-DDTHH:mm:ss.SSS" style={momentStyle}>
               <p className="created-date"> {comment.createdAt}</p>
              </Moment></p> */}

@@ -46,7 +46,7 @@ class Login extends Component {
                 <form>
                   <GoogleLogin
                     className="btn google-signup"
-                    clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                     buttonText="Sign Up with Google"
                     onSuccess={this.googleResponse}
                     onFailure={this.googleResponse}

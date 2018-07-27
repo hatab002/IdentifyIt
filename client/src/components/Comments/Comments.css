@@ -97,7 +97,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
     .comment-list {
         overflow: auto;
         max-height: 125px;
