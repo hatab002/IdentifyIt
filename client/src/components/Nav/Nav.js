@@ -69,7 +69,7 @@ class Nav extends Component {
                     <a className="nav-link" href="#login">
                       <GoogleLogin
                         className="google-button"
-                        clientId="187502641410-b36vrkjm4eort6va0ho9dulotaf7f895.apps.googleusercontent.com"
+                        clientId="187502641410-aj3vqhmg1l7ajkqid3ap18r19gj3s53c.apps.googleusercontent.com"
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.googleResponse}
