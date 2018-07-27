@@ -4,7 +4,6 @@ import Comments from '../Comments';
 
 const Card = props => {
 
-    console.log(props)
     return (
 
         <div className="container">

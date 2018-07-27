@@ -130,7 +130,8 @@ class Home extends Component {
     this.setState({
       isAuthenticated: false,
       alertShow: true,
-      alertBoldText: "You are logged out."
+      alertBoldText: "You are logged out.",
+      alertOtherText: ""
     });
   }
     

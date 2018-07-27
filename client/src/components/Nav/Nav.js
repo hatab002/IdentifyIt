@@ -10,7 +10,6 @@ import "./Nav.css";
 class Nav extends Component {
 
   googleResponse = (response) => {
-    console.log(response)
     this.props.loginUser(response.w3.U3);
   };
 
@@ -69,7 +68,7 @@ class Nav extends Component {
                     <a className="nav-link" href="#login">
                       <GoogleLogin
                         className="google-button"
-                        clientId="187502641410-aj3vqhmg1l7ajkqid3ap18r19gj3s53c.apps.googleusercontent.com"
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.googleResponse}
