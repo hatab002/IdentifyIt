@@ -1,6 +1,5 @@
 .comments-container {
     border-style: solid;
-    border-radius: 10px;
     width: 500px;
     height: 150px;
 }
@@ -9,8 +8,7 @@
     margin-top: 5%;
     padding: 10px;
     border-style: solid;
-    border-radius: 10px;
-    border-width: .5px;
+    border-width: .15px;
     background-color: #FFFD57;
     
 }
@@ -97,11 +95,9 @@
 }
 
 @media screen and (max-width: 768px) {
-
     .comment-list {
         overflow: auto;
-        max-height: 125px;
-        min-height: 125px;
+        max-height: 225px;
     }
 
     #comment-submit {

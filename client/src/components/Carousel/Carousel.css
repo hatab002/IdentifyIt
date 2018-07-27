@@ -4,8 +4,7 @@
     padding: 5px;
     border-style: solid;
     border-color: black;
-    border-width: .5px;
-    border-radius: 10px;
+    border-width: .25px;
 }
 
 #imageCarousel {   
@@ -16,12 +15,11 @@
     border-style: groove;
     border-color: black;
     border-width: .5px;
-    border-radius: 10px;
     
 }
 
 .carousel-control-prev-icon {
-    height: 80%;
+    height: 100%;
     background-color: #E8EAE1;
     width: 90%;
 }
@@ -37,7 +35,7 @@
 }
 
 .carousel-control-next-icon {
-    height: 80%;
+    height: 100%;
     background-color:#E8EAE1;
     width: 90%;
 
@@ -50,13 +48,10 @@
 @media screen and (max-width: 768px) {
     #imageCarousel {   
         padding-bottom: 5%;
-        height: 95%;
     }
     .image-responsive {
-        width: 150px;
-        height: 100px;
-        margin-top: 2%;
-        margin-bottom: 2%;
+        width: 225px;
+        height: 175px;
         padding: 5px;
         border-style: solid;
         border-color: black;
@@ -71,13 +66,5 @@
     .carousel-control-next {
         right: 0;
         width: 15%;
-    }
-
-    .carousel-control-prev-icon {
-        height: 100%;
-    }
-
-    .carousel-control-next-icon {
-        height: 100%;
     }
 }

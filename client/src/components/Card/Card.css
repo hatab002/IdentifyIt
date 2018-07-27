@@ -6,7 +6,6 @@
     border-style: groove;
     border-color: black;
     border-width: .5px;
-    border-radius: 10px;
 }
 
 #selected-image {
@@ -15,7 +14,6 @@
     margin-top: 6%;
     border-style: groove;
     border-color: black;
-    border-radius: 10px;
     border-width: .5px;
     padding: 1%;
 
@@ -23,7 +21,7 @@
 
 @media screen and (max-width: 768px) {
     #selected-image {
-        width: 200px;
-        height: 175px;
+        width: 225px;
+        height: 200px;
     }
 }

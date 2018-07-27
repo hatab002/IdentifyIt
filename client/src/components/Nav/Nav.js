@@ -49,7 +49,8 @@ class Nav extends Component {
           </nav>
           <Submit userId={this.props.userId} />
         </div>
-        ) :
+        ) 
+        :
 
         (<div>
           <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -67,7 +68,7 @@ class Nav extends Component {
                     <a className="nav-link" href="#login">
                       <GoogleLogin
                         className="google-button"
-                        clientId="524820948777-slfi5i193m7quknlops4br9sf0rmo6dj.apps.googleusercontent.com"
+                        clientId="187502641410-b36vrkjm4eort6va0ho9dulotaf7f895.apps.googleusercontent.com"
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.googleResponse}
