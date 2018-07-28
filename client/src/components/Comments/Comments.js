@@ -42,7 +42,7 @@ class Comments extends Component {
       });
       const socket = socketIOClient(process.env.REACT_APP_SOCKET_CLIENT)
         socket.on("new_comment", (new_comment) =>{
-          this.props.updateAlert(true, new_comment, this.state.newComment);
+          this.props.updateAlert(true, new_comment);
         });
     }
   }
@@ -115,9 +115,6 @@ class Comments extends Component {
              <span className="comment-span">
              <p className="username">{comment.user.username}
              <span id="timeAgo" style={momentStyle}>{moment(comment.createdAt).fromNow()}</span></p>
-             {/* <Moment id="comment-date" format="YYYY-MM-DDTHH:mm:ss.SSS" style={momentStyle}>
-              <p className="created-date"> {comment.createdAt}</p>
-             </Moment></p> */}
             <p className="comment-text">{comment.text}</p>
             </span>
               <span className="badge badge-primary badge-pill" key={comment._id}>

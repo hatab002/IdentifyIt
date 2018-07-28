@@ -24,7 +24,7 @@ const io = socketIo(server);
 
 io.on("connection", (socket) => {
   socket.emit("message", `Welcome to IdentifyIt `)
-  socket.broadcast.emit("new_comment", `New Comment: `)
+  socket.broadcast.emit("new_comment", `Someone submitted a new comment! Why don't you check out some pics and do the same!`)
   socket.on("disconnect", () => console.log("User disconnected"));
 });
 
