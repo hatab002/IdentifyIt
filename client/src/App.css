@@ -1,18 +1,28 @@
 .App {
   text-align: center;
-  font-family: 'Gaegu', cursive;
-  background-image: url("https://i.ytimg.com/vi/zQFwPAqmYMs/maxresdefault.jpg");
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
 }
 
-.card-container {
-  height: 80%;
-  margin: 2%;
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }
 
-.app-content {
-  flex: 1;
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

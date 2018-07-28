@@ -4,7 +4,6 @@ import Comments from '../Comments';
 
 const Card = props => {
 
-    console.log(props)
     return (
 
         <div className="container">
@@ -19,6 +18,7 @@ const Card = props => {
                         pictureId={props.pictureId}
                         pictureUserId={props.pictureUserId}
                         userId={props.userId}
+                        user={props.user}
                         updateAlert={props.updateAlert}/>
                     </div>
                 </div>

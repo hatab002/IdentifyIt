@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "./Comments.css";
 import API from "../../utils/API";
 import socketIOClient from "socket.io-client";
-import Moment from 'react-moment';
+import moment from 'moment';
+const momentStyle= {
+  margin:"7%",
+  color: "grey"
+}
 
 
 class Comments extends Component {
@@ -29,8 +33,14 @@ class Comments extends Component {
         text: this.state.newComment,
         picture: this.props.pictureId,
         user: this.props.userId
-      }).then(res => this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) }));
-      const socket = socketIOClient('http://localhost:3001')
+      }).then(res => {
+        res.data.user = {
+          _id: res.data.user,
+          username: this.props.user
+        }
+        this.setState({ newComment: "", comments: this.state.comments.concat([res.data]) })
+      });
+      const socket = socketIOClient(process.env.REACT_APP_SOCKET_CLIENT)
         socket.on("new_comment", (new_comment) =>{
           this.props.updateAlert(true, new_comment, this.state.newComment);
         });
@@ -103,10 +113,11 @@ class Comments extends Component {
           {this.state.comments.map(comment => (
             <li className="list-group-item d-flex justify-content-between align-items-center" key={comment._id}>
              <span className="comment-span">
-             <p className="username">{comment.user.username}</p>
-             <Moment id="comment-date" format="MM/DD/YYYY">
+             <p className="username">{comment.user.username}
+             <span id="timeAgo" style={momentStyle}>{moment(comment.createdAt).fromNow()}</span></p>
+             {/* <Moment id="comment-date" format="YYYY-MM-DDTHH:mm:ss.SSS" style={momentStyle}>
               <p className="created-date"> {comment.createdAt}</p>
-             </Moment>
+             </Moment></p> */}
             <p className="comment-text">{comment.text}</p>
             </span>
               <span className="badge badge-primary badge-pill" key={comment._id}>
