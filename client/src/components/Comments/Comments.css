@@ -18,7 +18,7 @@
 .comment-list {
     margin-top: 5%;
     text-align: left;
-    border-style: solid;
+    border-style: none;
     border-width: .15px;
     padding-bottom: 1px;
 }
